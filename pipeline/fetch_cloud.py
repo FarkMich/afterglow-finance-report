@@ -20,9 +20,13 @@ import os, sys, csv, json, datetime as dt, urllib.parse, urllib.request, urllib.
 
 HERE = pathlib.Path(__file__).resolve().parent
 BASE = "https://connectors.windsor.ai"
-API_KEY = os.environ.get("WINDSOR_API_KEY", "").strip()
+API_KEY = os.environ.get("WINDSOR_API_KEY", "").strip().strip('"').strip("'").strip()
+# tolerate common paste mistakes: a leading "api_key=" prefix or a full URL
+if "api_key=" in API_KEY:
+    API_KEY = API_KEY.split("api_key=", 1)[1].split("&", 1)[0].strip()
 if not API_KEY:
     sys.exit("ERROR: WINDSOR_API_KEY env var is not set (add it as a GitHub repo secret).")
+print(f"[auth] using API key of length {len(API_KEY)} (first2={API_KEY[:2]}…)")
 
 def windsor(connector, fields, **params):
     """Call the Windsor data API for one connector and return a list of row dicts.
