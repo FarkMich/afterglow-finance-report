@@ -1,0 +1,51 @@
+name: Daily finance dashboard
+
+on:
+  schedule:
+    # 04:30 UTC ≈ 06:30 Europe/Prague in summer (05:30 in winter). GitHub may delay a few min.
+    - cron: "30 4 * * *"
+  workflow_dispatch: {}   # allows manual "Run workflow" from the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: finance-dashboard
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch data from Windsor (sheet + WooCommerce)
+        env:
+          WINDSOR_API_KEY: ${{ secrets.WINDSOR_API_KEY }}
+        run: python fetch_cloud.py
+        working-directory: pipeline
+
+      - name: Parse + build dashboard
+        run: |
+          python parse_finance.py
+          python build_finance.py
+          cp afterglow-finance-dashboard.html ../index.html
+        working-directory: pipeline
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name "Afterglow Report"
+          git config user.email "misko.farkas@gmail.com"
+          git add index.html
+          if git diff --cached --quiet; then
+            echo "No dashboard changes today."
+          else
+            git commit -m "Finance dashboard - $(date -u +%Y-%m-%d)"
+            git push
+          fi
