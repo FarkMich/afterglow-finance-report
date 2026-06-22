@@ -1135,9 +1135,11 @@ const DATA = {
    "pricePerPackage": 10.76
   },
   "avgDiscountPerOrder": 9.57,
+  "discountPctPerOrder": 11.46,
   "wcOrders": 103,
   "totalDiscount": 985.65,
   "avgDiscountPerCouponOrder": 30.78,
+  "discountPctPerCouponOrder": 23.92,
   "couponOrders": 31,
   "source": "sheet(packages)+woocommerce(discounts)"
  },
@@ -1237,9 +1239,9 @@ function renderUnitEcon(){
   document.getElementById('uePpp').textContent=eur(U.overall.pricePerPackage);
   document.getElementById('uePppSub').textContent=`${fmt(U.overall.units)} packages · ${eur(U.overall.revenue)} revenue`;
   document.getElementById('ueDisc').textContent=eur(U.avgDiscountPerOrder);
-  document.getElementById('ueDiscSub').textContent=`${eur(U.totalDiscount)} across ${fmt(U.wcOrders)} WooCommerce orders`;
+  document.getElementById('ueDiscSub').textContent=`${pct2(U.discountPctPerOrder)} off gross · ${fmt(U.wcOrders)} WooCommerce orders`;
   document.getElementById('ueDiscC').textContent=eur(U.avgDiscountPerCouponOrder);
-  document.getElementById('ueDiscCSub').textContent=`${fmt(U.couponOrders)} orders used a coupon`;
+  document.getElementById('ueDiscCSub').textContent=`${pct2(U.discountPctPerCouponOrder)} off gross · ${fmt(U.couponOrders)} coupon orders`;
   const rows=U.perPackage, labels=rows.map(r=>r.label.split(' ')[0]);
   if(charts.ppp)charts.ppp.destroy();
   charts.ppp=mkBar('chPpp',labels,rows.map(r=>r.pricePerPackage),eur);
@@ -1248,7 +1250,7 @@ function renderUnitEcon(){
   t+=`<tr class="totrow"><td>Overall</td><td>—</td><td>${fmt(U.overall.units)}</td><td>${eur(U.overall.revenue)}</td><td>${eur(U.overall.pricePerPackage)}</td></tr>`;
   t+=`</tbody></table>`;
   document.getElementById('ueTable').innerHTML=t;
-  document.getElementById('ueNote').textContent=`Price per package = revenue ÷ packages (units) from the order log, since ${U.sinceLabel}. Average discount per order = total discount given ÷ all ${fmt(U.wcOrders)} completed WooCommerce orders (${eur(U.totalDiscount)} total). The third figure narrows this to the ${fmt(U.couponOrders)} orders that actually used a coupon (${eur(U.avgDiscountPerCouponOrder)} each). Discounts are WooCommerce-only - offline/wholesale orders carry none. Figures use 2 decimals.`;
+  document.getElementById('ueNote').textContent=`Price per package = revenue ÷ packages (units) from the order log, since ${U.sinceLabel}. Average discount per order = total discount given ÷ all ${fmt(U.wcOrders)} completed WooCommerce orders (${eur(U.totalDiscount)} total, ${pct2(U.discountPctPerOrder)} off gross). The third figure narrows this to the ${fmt(U.couponOrders)} orders that actually used a coupon (${eur(U.avgDiscountPerCouponOrder)} / ${pct2(U.discountPctPerCouponOrder)} each). The % is discount ÷ gross (net + discount), aggregated across orders. Discounts are WooCommerce-only - offline/wholesale orders carry none. Figures use 2 decimals.`;
 }
 
 // ---- KPI gauges ----
