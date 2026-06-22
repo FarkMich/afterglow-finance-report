@@ -79,6 +79,14 @@
   .ring .rlbl{font-size:10.5px;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-top:8px;}
   .ring .rsub{font-size:11px;color:var(--text2);margin-top:3px;}
 
+  /* unit econ table */
+  .uetbl{width:100%;border-collapse:collapse;font-size:13px;}
+  .uetbl th{text-align:right;font-weight:normal;color:var(--text2);font-size:10.5px;letter-spacing:1px;text-transform:uppercase;padding:10px 12px;border-bottom:1px solid var(--mid);}
+  .uetbl th:first-child,.uetbl td:first-child{text-align:left;}
+  .uetbl td{text-align:right;padding:10px 12px;border-bottom:1px solid var(--line);color:var(--text);}
+  .uetbl tbody tr:last-child td{border-bottom:none;}
+  .uetbl .totrow td{font-family:'HNBlack';color:var(--text);border-top:2px solid var(--mid);border-bottom:none;}
+
   .note{background:rgba(206,0,113,.06);border:1px solid rgba(206,0,113,.22);border-radius:12px;padding:14px 18px;font-size:12px;color:var(--text2);line-height:1.6;margin-top:18px;}
   .footer{text-align:center;padding:34px 20px;font-size:11px;color:var(--mid);}
   .footer .strip{margin-bottom:20px;}
@@ -96,6 +104,7 @@
 <div class="container">
   <div class="maintabs">
     <button class="mt-btn active" data-p="main">Main</button>
+    <button class="mt-btn" data-p="unit">Unit econ</button>
     <button class="mt-btn" data-p="kpis">KPIs</button>
   </div>
 
@@ -154,6 +163,20 @@
       <div class="card"><h3>Top coupons<span style="color:var(--mid);font-size:11px"> · code · uses · discount · revenue</span></h3><div class="leg" id="topCpn" style="flex-direction:column;gap:9px"></div></div>
     </div>
     <div class="note" id="cpnNote"></div>
+  </div>
+
+  <!-- ===== UNIT ECON ===== -->
+  <div class="panel" id="panel-unit">
+    <div class="section-title"><span class="num">€</span> Price per package &amp; discounts<span class="ctx" id="ueCtx">since Jan 2026</span></div>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-label">Price / package (overall)</div><div class="kpi-value" id="uePpp">-</div><div class="kpi-sub" id="uePppSub"></div></div>
+      <div class="kpi-card"><div class="kpi-label">Avg discount / order</div><div class="kpi-value" id="ueDisc">-</div><div class="kpi-sub" id="ueDiscSub"></div></div>
+      <div class="kpi-card"><div class="kpi-label">Avg discount / discounted order</div><div class="kpi-value" id="ueDiscC">-</div><div class="kpi-sub" id="ueDiscCSub"></div></div>
+    </div>
+    <div class="section-title"><span class="num">&middot;</span> Price per package by month</div>
+    <div class="card"><h3>Price per package (EUR)</h3><div class="chart-wrap"><canvas id="chPpp"></canvas></div></div>
+    <div class="card"><h3>Monthly detail</h3><div id="ueTable"></div></div>
+    <div class="note" id="ueNote"></div>
   </div>
 
   <!-- ===== KPIS ===== -->
@@ -1060,6 +1083,64 @@ const DATA = {
   "totalDiscountAllOrders": 985.65,
   "source": "woocommerce"
  },
+ "unitEcon": {
+  "sinceLabel": "Jan 2026",
+  "perPackage": [
+   {
+    "label": "Jan 2026",
+    "orders": 7,
+    "units": 45,
+    "revenue": 445.72,
+    "pricePerPackage": 9.9
+   },
+   {
+    "label": "Feb 2026",
+    "orders": 5,
+    "units": 60,
+    "revenue": 806.84,
+    "pricePerPackage": 13.45
+   },
+   {
+    "label": "Mar 2026",
+    "orders": 11,
+    "units": 121,
+    "revenue": 1143.22,
+    "pricePerPackage": 9.45
+   },
+   {
+    "label": "Apr 2026",
+    "orders": 11,
+    "units": 52,
+    "revenue": 664.25,
+    "pricePerPackage": 12.77
+   },
+   {
+    "label": "May 2026",
+    "orders": 20,
+    "units": 214,
+    "revenue": 2138.62,
+    "pricePerPackage": 9.99
+   },
+   {
+    "label": "Jun 2026",
+    "orders": 13,
+    "units": 74,
+    "revenue": 892.62,
+    "pricePerPackage": 12.06
+   }
+  ],
+  "overall": {
+   "units": 566,
+   "revenue": 6091.27,
+   "pricePerPackage": 10.76
+  },
+  "avgDiscountPerOrder": 9.57,
+  "wcOrders": 103,
+  "totalDiscount": 985.65,
+  "avgDiscountPerCouponOrder": 30.78,
+  "couponOrders": 31,
+  "source": "sheet(packages)+woocommerce(discounts)"
+ },
  "blanksExcluded": 5,
  "source": "sheet+woocommerce_coupons"
 };
@@ -1149,6 +1230,27 @@ function renderCoupons(){
   document.getElementById('cpnNote').textContent=`Coupon orders are completed orders carrying at least one coupon code; "coupons applied" counts every redemption (orders can stack more than one). Discount given is the total markdown on those orders; coupon revenue is what they still brought in. Across all completed orders, total discount given was ${eur(C.totalDiscountAllOrders)}.`;
 }
 
+// ---- unit economics ----
+function renderUnitEcon(){
+  const U=DATA.unitEcon; if(!U) return;
+  document.getElementById('ueCtx').textContent='since '+U.sinceLabel;
+  document.getElementById('uePpp').textContent=eur(U.overall.pricePerPackage);
+  document.getElementById('uePppSub').textContent=`${fmt(U.overall.units)} packages · ${eur(U.overall.revenue)} revenue`;
+  document.getElementById('ueDisc').textContent=eur(U.avgDiscountPerOrder);
+  document.getElementById('ueDiscSub').textContent=`${eur(U.totalDiscount)} across ${fmt(U.wcOrders)} WooCommerce orders`;
+  document.getElementById('ueDiscC').textContent=eur(U.avgDiscountPerCouponOrder);
+  document.getElementById('ueDiscCSub').textContent=`${fmt(U.couponOrders)} orders used a coupon`;
+  const rows=U.perPackage, labels=rows.map(r=>r.label.split(' ')[0]);
+  if(charts.ppp)charts.ppp.destroy();
+  charts.ppp=mkBar('chPpp',labels,rows.map(r=>r.pricePerPackage),eur);
+  let t=`<table class="uetbl"><thead><tr><th>Month</th><th>Orders</th><th>Packages</th><th>Revenue</th><th>Price / package</th></tr></thead><tbody>`;
+  rows.forEach(r=>{t+=`<tr><td>${r.label}</td><td>${fmt(r.orders)}</td><td>${fmt(r.units)}</td><td>${eur(r.revenue)}</td><td>${eur(r.pricePerPackage)}</td></tr>`;});
+  t+=`<tr class="totrow"><td>Overall</td><td>—</td><td>${fmt(U.overall.units)}</td><td>${eur(U.overall.revenue)}</td><td>${eur(U.overall.pricePerPackage)}</td></tr>`;
+  t+=`</tbody></table>`;
+  document.getElementById('ueTable').innerHTML=t;
+  document.getElementById('ueNote').textContent=`Price per package = revenue ÷ packages (units) from the order log, since ${U.sinceLabel}. Average discount per order = total discount given ÷ all ${fmt(U.wcOrders)} completed WooCommerce orders (${eur(U.totalDiscount)} total). The third figure narrows this to the ${fmt(U.couponOrders)} orders that actually used a coupon (${eur(U.avgDiscountPerCouponOrder)} each). Discounts are WooCommerce-only - offline/wholesale orders carry none. Figures use 2 decimals.`;
+}
+
 // ---- KPI gauges ----
 function ring(pct,label,sub){
   const r=42,c=2*Math.PI*r,off=c*(1-Math.min(1,pct/100));
@@ -1188,13 +1290,14 @@ document.getElementById('pO').textContent=fmt(pm.others); document.getElementByI
 document.getElementById('note').textContent=`Orders, revenue and AOV come from the order log (incl. offline/wholesale orders not in WooCommerce). Pack mix counts pack-equivalents: from Oct 2025, multiples of 10 (20, 30, 50…) count as that many 10-packs and other multiples of 3 (6, 9, 24…) as that many 3-packs; before Oct, face value only. "Other orders" are non-standard sizes. AOV is revenue ÷ orders, lifted by occasional large wholesale orders. ${DATA.blanksExcluded} value-less rows were excluded; the current month/week is in progress.`;
 document.getElementById('foot').textContent="Afterglow · revenue dashboard · generated "+new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
 
-renderMain(); renderCountryPies(); renderCoupons(); renderKpis();
+renderMain(); renderCountryPies(); renderCoupons(); renderUnitEcon(); renderKpis();
 document.querySelectorAll('.tg-btn').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.tg-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');state=b.dataset.g;renderMain();}));
 document.querySelectorAll('.mt-btn').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.mt-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
   document.getElementById('panel-'+b.dataset.p).classList.add('active');
+  if(b.dataset.p==='unit') renderUnitEcon();  // (re)build chart while panel is visible so it sizes correctly
   window.scrollTo({top:0,behavior:'smooth'});}));
 </script>
 </body>
