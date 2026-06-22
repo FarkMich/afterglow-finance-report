@@ -1085,71 +1085,63 @@ const DATA = {
  },
  "unitEcon": {
   "sinceLabel": "Jan 2026",
-  "metaSpendAvailable": false,
+  "metaSpendAvailable": true,
   "costPerPackage": [
    {
     "label": "Jan 2026",
     "units": 45,
-    "metaSpend": 0.0,
+    "metaSpend": 478.43,
     "influencer": 0.0,
-    "totalSpend": 0.0,
-    "costPerPackage": 0.0
+    "totalSpend": 478.43,
+    "costPerPackage": 10.63
    },
    {
     "label": "Feb 2026",
     "units": 60,
-    "metaSpend": 0.0,
+    "metaSpend": 617.45,
     "influencer": 0.0,
-    "totalSpend": 0.0,
-    "costPerPackage": 0.0
+    "totalSpend": 617.45,
+    "costPerPackage": 10.29
    },
    {
     "label": "Mar 2026",
     "units": 121,
-    "metaSpend": 0.0,
+    "metaSpend": 469.09,
     "influencer": 500.0,
-    "totalSpend": 500.0,
-    "costPerPackage": 4.13
+    "totalSpend": 969.09,
+    "costPerPackage": 8.01
    },
    {
     "label": "Apr 2026",
     "units": 52,
-    "metaSpend": 0.0,
+    "metaSpend": 127.14,
     "influencer": 500.0,
-    "totalSpend": 500.0,
-    "costPerPackage": 9.62
+    "totalSpend": 627.14,
+    "costPerPackage": 12.06
    },
    {
     "label": "May 2026",
     "units": 214,
-    "metaSpend": 0.0,
+    "metaSpend": 425.75,
     "influencer": 500.0,
-    "totalSpend": 500.0,
-    "costPerPackage": 2.34
+    "totalSpend": 925.75,
+    "costPerPackage": 4.33
    },
    {
     "label": "Jun 2026",
     "units": 74,
-    "metaSpend": 0.0,
+    "metaSpend": 401.97,
     "influencer": 500.0,
-    "totalSpend": 500.0,
-    "costPerPackage": 6.76
-   },
-   {
-    "label": "Jul 2026",
-    "units": 0,
-    "metaSpend": 0.0,
-    "influencer": 500.0,
-    "totalSpend": 500.0,
-    "costPerPackage": null
+    "totalSpend": 901.97,
+    "costPerPackage": 12.19
    }
   ],
   "overall": {
    "units": 566,
-   "metaSpend": 0.0,
-   "influencer": 2500.0,
-   "totalSpend": 2500.0,
-   "costPerPackage": 4.42
+   "metaSpend": 2519.83,
+   "influencer": 2000.0,
+   "totalSpend": 4519.83,
+   "costPerPackage": 7.99
   },
   "avgDiscountPerOrder": 9.57,
   "discountPctPerOrder": 11.46,
@@ -1272,7 +1264,7 @@ function renderUnitEcon(){
   const metaNote = U.metaSpendAvailable
     ? `Meta ad spend is pulled from Windsor.`
     : `Meta Ads currently returns €0 spend from Windsor for this period, so the figures reflect the €500/month influencer spend only - they will include Meta automatically once spend data flows.`;
-  document.getElementById('ueNote').textContent=`Cost per package = total marketing spend ÷ packages (units) from the order log, since ${U.sinceLabel}. Marketing spend = Meta ad spend + €500/month influencer (Mar, Apr, May, Jun, Jul 2026). ${metaNote} Average discount per order = total discount given ÷ all ${fmt(U.wcOrders)} completed WooCommerce orders (${eur(U.totalDiscount)} total, ${pct2(U.discountPctPerOrder)} off gross); the third card narrows this to the ${fmt(U.couponOrders)} coupon orders (${eur(U.avgDiscountPerCouponOrder)} / ${pct2(U.discountPctPerCouponOrder)} each). Months with spend but no orders yet (e.g. Jul) show cost/package as n/a. Figures use 2 decimals.`;
+  document.getElementById('ueNote').textContent=`Cost per package = total marketing spend ÷ packages (units) from the order log, since ${U.sinceLabel}. Marketing spend = Meta ad spend + €500/month influencer (Mar, Apr, May, Jun 2026). ${metaNote} Average discount per order = total discount given ÷ all ${fmt(U.wcOrders)} completed WooCommerce orders (${eur(U.totalDiscount)} total, ${pct2(U.discountPctPerOrder)} off gross); the third card narrows this to the ${fmt(U.couponOrders)} coupon orders (${eur(U.avgDiscountPerCouponOrder)} / ${pct2(U.discountPctPerCouponOrder)} each). Months with spend but no orders yet (e.g. Jul) show cost/package as n/a. Figures use 2 decimals.`;
 }
 
 // ---- KPI gauges ----
