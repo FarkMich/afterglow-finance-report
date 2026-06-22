@@ -104,7 +104,7 @@
 <div class="container">
   <div class="maintabs">
     <button class="mt-btn active" data-p="main">Main</button>
-    <button class="mt-btn" data-p="unit">Unit econ</button>
+    <button class="mt-btn" data-p="unit">CAC</button>
     <button class="mt-btn" data-p="kpis">KPIs</button>
   </div>
 
@@ -167,14 +167,14 @@
 
   <!-- ===== UNIT ECON ===== -->
   <div class="panel" id="panel-unit">
-    <div class="section-title"><span class="num">€</span> Cost per package &amp; discounts<span class="ctx" id="ueCtx">since Jan 2026</span></div>
+    <div class="section-title"><span class="num">€</span> Customer acquisition cost &amp; discounts<span class="ctx" id="ueCtx">since Jan 2026</span></div>
     <div class="kpi-grid">
-      <div class="kpi-card"><div class="kpi-label">Cost / package (overall)</div><div class="kpi-value" id="uePpp">-</div><div class="kpi-sub" id="uePppSub"></div></div>
+      <div class="kpi-card"><div class="kpi-label">CAC (overall)</div><div class="kpi-value" id="uePpp">-</div><div class="kpi-sub" id="uePppSub"></div></div>
       <div class="kpi-card"><div class="kpi-label">Avg discount / order</div><div class="kpi-value" id="ueDisc">-</div><div class="kpi-sub" id="ueDiscSub"></div></div>
       <div class="kpi-card"><div class="kpi-label">Avg discount / discounted order</div><div class="kpi-value" id="ueDiscC">-</div><div class="kpi-sub" id="ueDiscCSub"></div></div>
     </div>
-    <div class="section-title"><span class="num">&middot;</span> Cost per package by month</div>
-    <div class="card"><h3>Cost per package (EUR)</h3><div class="chart-wrap"><canvas id="chPpp"></canvas></div></div>
+    <div class="section-title"><span class="num">&middot;</span> Customer acquisition cost by month</div>
+    <div class="card"><h3>CAC - cost per customer (EUR)</h3><div class="chart-wrap"><canvas id="chPpp"></canvas></div></div>
     <div class="card"><h3>Monthly detail</h3><div id="ueTable"></div></div>
     <div class="note" id="ueNote"></div>
   </div>
@@ -876,10 +876,10 @@ const DATA = {
   }
  ],
  "totals": {
-  "orders": 115,
+  "orders": 67,
   "revenue": 12265.63,
-  "units": 566,
-  "aov": 106.66
+  "units": 959,
+  "aov": 183.07
  },
  "packMix": {
   "ones": 12,
@@ -985,7 +985,7 @@ const DATA = {
   "applications": 31,
   "discountGiven": 954.27,
   "revenue": 3034.63,
-  "pctOrders": 26.96,
+  "pctOrders": 46.27,
   "pctRevenue": 24.74,
   "savingsRate": 23.92,
   "topCoupons": [
@@ -1086,62 +1086,62 @@ const DATA = {
  "unitEcon": {
   "sinceLabel": "Jan 2026",
   "metaSpendAvailable": true,
-  "costPerPackage": [
+  "cac": [
    {
     "label": "Jan 2026",
-    "units": 45,
+    "orders": 7,
     "metaSpend": 478.43,
     "influencer": 0.0,
     "totalSpend": 478.43,
-    "costPerPackage": 10.63
+    "cac": 68.35
    },
    {
     "label": "Feb 2026",
-    "units": 60,
+    "orders": 5,
     "metaSpend": 617.45,
     "influencer": 0.0,
     "totalSpend": 617.45,
-    "costPerPackage": 10.29
+    "cac": 123.49
    },
    {
     "label": "Mar 2026",
-    "units": 121,
+    "orders": 11,
     "metaSpend": 469.09,
     "influencer": 500.0,
     "totalSpend": 969.09,
-    "costPerPackage": 8.01
+    "cac": 88.1
    },
    {
     "label": "Apr 2026",
-    "units": 52,
+    "orders": 11,
     "metaSpend": 127.14,
     "influencer": 500.0,
     "totalSpend": 627.14,
-    "costPerPackage": 12.06
+    "cac": 57.01
    },
    {
     "label": "May 2026",
-    "units": 214,
+    "orders": 20,
     "metaSpend": 425.75,
     "influencer": 500.0,
     "totalSpend": 925.75,
-    "costPerPackage": 4.33
+    "cac": 46.29
    },
    {
     "label": "Jun 2026",
-    "units": 74,
+    "orders": 13,
     "metaSpend": 401.97,
     "influencer": 500.0,
     "totalSpend": 901.97,
-    "costPerPackage": 12.19
+    "cac": 69.38
    }
   ],
   "overall": {
-   "units": 566,
+   "orders": 67,
    "metaSpend": 2519.83,
    "influencer": 2000.0,
    "totalSpend": 4519.83,
-   "costPerPackage": 7.99
+   "cac": 67.46
   },
   "avgDiscountPerOrder": 9.57,
   "discountPctPerOrder": 11.46,
@@ -1246,25 +1246,25 @@ function renderUnitEcon(){
   const U=DATA.unitEcon; if(!U) return;
   const naE = v => (v==null ? 'n/a' : eur(v));
   document.getElementById('ueCtx').textContent='since '+U.sinceLabel;
-  document.getElementById('uePpp').textContent=naE(U.overall.costPerPackage);
-  document.getElementById('uePppSub').textContent=`${fmt(U.overall.units)} packages · ${eur(U.overall.totalSpend)} marketing spend`;
+  document.getElementById('uePpp').textContent=naE(U.overall.cac);
+  document.getElementById('uePppSub').textContent=`${eur(U.overall.totalSpend)} spend ÷ ${fmt(U.overall.orders)} orders`;
   document.getElementById('ueDisc').textContent=eur(U.avgDiscountPerOrder);
   document.getElementById('ueDiscSub').textContent=`${pct2(U.discountPctPerOrder)} off gross · ${fmt(U.wcOrders)} WooCommerce orders`;
   document.getElementById('ueDiscC').textContent=eur(U.avgDiscountPerCouponOrder);
   document.getElementById('ueDiscCSub').textContent=`${pct2(U.discountPctPerCouponOrder)} off gross · ${fmt(U.couponOrders)} coupon orders`;
-  const rows=U.costPerPackage, labels=rows.map(r=>r.label.split(' ')[0]);
+  const rows=U.cac, labels=rows.map(r=>r.label.split(' ')[0]);
   if(charts.ppp)charts.ppp.destroy();
-  charts.ppp=mkBar('chPpp',labels,rows.map(r=>r.costPerPackage),eur);
-  let t=`<table class="uetbl"><thead><tr><th>Month</th><th>Packages</th><th>Meta</th><th>Influencer</th><th>Total spend</th><th>Cost / package</th></tr></thead><tbody>`;
-  rows.forEach(r=>{t+=`<tr><td>${r.label}</td><td>${fmt(r.units)}</td><td>${eur(r.metaSpend)}</td><td>${eur(r.influencer)}</td><td>${eur(r.totalSpend)}</td><td>${naE(r.costPerPackage)}</td></tr>`;});
+  charts.ppp=mkBar('chPpp',labels,rows.map(r=>r.cac),eur);
+  let t=`<table class="uetbl"><thead><tr><th>Month</th><th>Orders</th><th>Meta</th><th>Influencer</th><th>Total spend</th><th>CAC</th></tr></thead><tbody>`;
+  rows.forEach(r=>{t+=`<tr><td>${r.label}</td><td>${fmt(r.orders)}</td><td>${eur(r.metaSpend)}</td><td>${eur(r.influencer)}</td><td>${eur(r.totalSpend)}</td><td>${naE(r.cac)}</td></tr>`;});
   const o=U.overall;
-  t+=`<tr class="totrow"><td>Overall</td><td>${fmt(o.units)}</td><td>${eur(o.metaSpend)}</td><td>${eur(o.influencer)}</td><td>${eur(o.totalSpend)}</td><td>${naE(o.costPerPackage)}</td></tr>`;
+  t+=`<tr class="totrow"><td>Overall</td><td>${fmt(o.orders)}</td><td>${eur(o.metaSpend)}</td><td>${eur(o.influencer)}</td><td>${eur(o.totalSpend)}</td><td>${naE(o.cac)}</td></tr>`;
   t+=`</tbody></table>`;
   document.getElementById('ueTable').innerHTML=t;
   const metaNote = U.metaSpendAvailable
     ? `Meta ad spend is pulled from Windsor.`
     : `Meta Ads currently returns €0 spend from Windsor for this period, so the figures reflect the €500/month influencer spend only - they will include Meta automatically once spend data flows.`;
-  document.getElementById('ueNote').textContent=`Cost per package = total marketing spend ÷ packages (units) from the order log, since ${U.sinceLabel}. Marketing spend = Meta ad spend + €500/month influencer (Mar, Apr, May, Jun 2026). ${metaNote} Average discount per order = total discount given ÷ all ${fmt(U.wcOrders)} completed WooCommerce orders (${eur(U.totalDiscount)} total, ${pct2(U.discountPctPerOrder)} off gross); the third card narrows this to the ${fmt(U.couponOrders)} coupon orders (${eur(U.avgDiscountPerCouponOrder)} / ${pct2(U.discountPctPerCouponOrder)} each). Months with spend but no orders yet (e.g. Jul) show cost/package as n/a. Figures use 2 decimals.`;
+  document.getElementById('ueNote').textContent=`CAC (customer acquisition cost) = total marketing spend ÷ orders, since ${U.sinceLabel}. Orders are used as a proxy for customers acquired, so this reads as cost per order; it equals true CAC only if repeat buyers are rare (otherwise it slightly understates new-customer cost). Marketing spend = Meta ad spend + €500/month influencer (Mar, Apr, May, Jun 2026). ${metaNote} It is a blended figure across both channels and ignores attribution lag (spend one month can convert the next). Average discount per order = total discount given ÷ all ${fmt(U.wcOrders)} completed WooCommerce orders (${eur(U.totalDiscount)} total, ${pct2(U.discountPctPerOrder)} off gross); the third card narrows this to the ${fmt(U.couponOrders)} coupon orders (${eur(U.avgDiscountPerCouponOrder)} / ${pct2(U.discountPctPerCouponOrder)} each). Figures use 2 decimals.`;
 }
 
 // ---- KPI gauges ----
