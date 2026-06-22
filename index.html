@@ -167,14 +167,14 @@
 
   <!-- ===== UNIT ECON ===== -->
   <div class="panel" id="panel-unit">
-    <div class="section-title"><span class="num">€</span> Price per package &amp; discounts<span class="ctx" id="ueCtx">since Jan 2026</span></div>
+    <div class="section-title"><span class="num">€</span> Cost per package &amp; discounts<span class="ctx" id="ueCtx">since Jan 2026</span></div>
     <div class="kpi-grid">
-      <div class="kpi-card"><div class="kpi-label">Price / package (overall)</div><div class="kpi-value" id="uePpp">-</div><div class="kpi-sub" id="uePppSub"></div></div>
+      <div class="kpi-card"><div class="kpi-label">Cost / package (overall)</div><div class="kpi-value" id="uePpp">-</div><div class="kpi-sub" id="uePppSub"></div></div>
       <div class="kpi-card"><div class="kpi-label">Avg discount / order</div><div class="kpi-value" id="ueDisc">-</div><div class="kpi-sub" id="ueDiscSub"></div></div>
       <div class="kpi-card"><div class="kpi-label">Avg discount / discounted order</div><div class="kpi-value" id="ueDiscC">-</div><div class="kpi-sub" id="ueDiscCSub"></div></div>
     </div>
-    <div class="section-title"><span class="num">&middot;</span> Price per package by month</div>
-    <div class="card"><h3>Price per package (EUR)</h3><div class="chart-wrap"><canvas id="chPpp"></canvas></div></div>
+    <div class="section-title"><span class="num">&middot;</span> Cost per package by month</div>
+    <div class="card"><h3>Cost per package (EUR)</h3><div class="chart-wrap"><canvas id="chPpp"></canvas></div></div>
     <div class="card"><h3>Monthly detail</h3><div id="ueTable"></div></div>
     <div class="note" id="ueNote"></div>
   </div>
@@ -878,7 +878,7 @@ const DATA = {
  "totals": {
   "orders": 115,
   "revenue": 12265.63,
-  "units": 959,
+  "units": 566,
   "aov": 106.66
  },
  "packMix": {
@@ -1085,54 +1085,71 @@ const DATA = {
  },
  "unitEcon": {
   "sinceLabel": "Jan 2026",
-  "perPackage": [
+  "metaSpendAvailable": false,
+  "costPerPackage": [
    {
     "label": "Jan 2026",
-    "orders": 7,
     "units": 45,
-    "revenue": 445.72,
-    "pricePerPackage": 9.9
+    "metaSpend": 0.0,
+    "influencer": 0.0,
+    "totalSpend": 0.0,
+    "costPerPackage": 0.0
    },
    {
     "label": "Feb 2026",
-    "orders": 5,
     "units": 60,
-    "revenue": 806.84,
-    "pricePerPackage": 13.45
+    "metaSpend": 0.0,
+    "influencer": 0.0,
+    "totalSpend": 0.0,
+    "costPerPackage": 0.0
    },
    {
     "label": "Mar 2026",
-    "orders": 11,
     "units": 121,
-    "revenue": 1143.22,
-    "pricePerPackage": 9.45
+    "metaSpend": 0.0,
+    "influencer": 500.0,
+    "totalSpend": 500.0,
+    "costPerPackage": 4.13
    },
    {
     "label": "Apr 2026",
-    "orders": 11,
     "units": 52,
-    "revenue": 664.25,
-    "pricePerPackage": 12.77
+    "metaSpend": 0.0,
+    "influencer": 500.0,
+    "totalSpend": 500.0,
+    "costPerPackage": 9.62
    },
    {
     "label": "May 2026",
-    "orders": 20,
     "units": 214,
-    "revenue": 2138.62,
-    "pricePerPackage": 9.99
+    "metaSpend": 0.0,
+    "influencer": 500.0,
+    "totalSpend": 500.0,
+    "costPerPackage": 2.34
    },
    {
     "label": "Jun 2026",
-    "orders": 13,
     "units": 74,
-    "revenue": 892.62,
-    "pricePerPackage": 12.06
+    "metaSpend": 0.0,
+    "influencer": 500.0,
+    "totalSpend": 500.0,
+    "costPerPackage": 6.76
+   },
+   {
+    "label": "Jul 2026",
+    "units": 0,
+    "metaSpend": 0.0,
+    "influencer": 500.0,
+    "totalSpend": 500.0,
+    "costPerPackage": null
    }
   ],
   "overall": {
    "units": 566,
-   "revenue": 6091.27,
-   "pricePerPackage": 10.76
+   "metaSpend": 0.0,
+   "influencer": 2500.0,
+   "totalSpend": 2500.0,
+   "costPerPackage": 4.42
   },
   "avgDiscountPerOrder": 9.57,
   "discountPctPerOrder": 11.46,
@@ -1235,22 +1252,27 @@ function renderCoupons(){
 // ---- unit economics ----
 function renderUnitEcon(){
   const U=DATA.unitEcon; if(!U) return;
+  const naE = v => (v==null ? 'n/a' : eur(v));
   document.getElementById('ueCtx').textContent='since '+U.sinceLabel;
-  document.getElementById('uePpp').textContent=eur(U.overall.pricePerPackage);
-  document.getElementById('uePppSub').textContent=`${fmt(U.overall.units)} packages · ${eur(U.overall.revenue)} revenue`;
+  document.getElementById('uePpp').textContent=naE(U.overall.costPerPackage);
+  document.getElementById('uePppSub').textContent=`${fmt(U.overall.units)} packages · ${eur(U.overall.totalSpend)} marketing spend`;
   document.getElementById('ueDisc').textContent=eur(U.avgDiscountPerOrder);
   document.getElementById('ueDiscSub').textContent=`${pct2(U.discountPctPerOrder)} off gross · ${fmt(U.wcOrders)} WooCommerce orders`;
   document.getElementById('ueDiscC').textContent=eur(U.avgDiscountPerCouponOrder);
   document.getElementById('ueDiscCSub').textContent=`${pct2(U.discountPctPerCouponOrder)} off gross · ${fmt(U.couponOrders)} coupon orders`;
-  const rows=U.perPackage, labels=rows.map(r=>r.label.split(' ')[0]);
+  const rows=U.costPerPackage, labels=rows.map(r=>r.label.split(' ')[0]);
   if(charts.ppp)charts.ppp.destroy();
-  charts.ppp=mkBar('chPpp',labels,rows.map(r=>r.pricePerPackage),eur);
-  let t=`<table class="uetbl"><thead><tr><th>Month</th><th>Orders</th><th>Packages</th><th>Revenue</th><th>Price / package</th></tr></thead><tbody>`;
-  rows.forEach(r=>{t+=`<tr><td>${r.label}</td><td>${fmt(r.orders)}</td><td>${fmt(r.units)}</td><td>${eur(r.revenue)}</td><td>${eur(r.pricePerPackage)}</td></tr>`;});
-  t+=`<tr class="totrow"><td>Overall</td><td>—</td><td>${fmt(U.overall.units)}</td><td>${eur(U.overall.revenue)}</td><td>${eur(U.overall.pricePerPackage)}</td></tr>`;
+  charts.ppp=mkBar('chPpp',labels,rows.map(r=>r.costPerPackage),eur);
+  let t=`<table class="uetbl"><thead><tr><th>Month</th><th>Packages</th><th>Meta</th><th>Influencer</th><th>Total spend</th><th>Cost / package</th></tr></thead><tbody>`;
+  rows.forEach(r=>{t+=`<tr><td>${r.label}</td><td>${fmt(r.units)}</td><td>${eur(r.metaSpend)}</td><td>${eur(r.influencer)}</td><td>${eur(r.totalSpend)}</td><td>${naE(r.costPerPackage)}</td></tr>`;});
+  const o=U.overall;
+  t+=`<tr class="totrow"><td>Overall</td><td>${fmt(o.units)}</td><td>${eur(o.metaSpend)}</td><td>${eur(o.influencer)}</td><td>${eur(o.totalSpend)}</td><td>${naE(o.costPerPackage)}</td></tr>`;
   t+=`</tbody></table>`;
   document.getElementById('ueTable').innerHTML=t;
-  document.getElementById('ueNote').textContent=`Price per package = revenue ÷ packages (units) from the order log, since ${U.sinceLabel}. Average discount per order = total discount given ÷ all ${fmt(U.wcOrders)} completed WooCommerce orders (${eur(U.totalDiscount)} total, ${pct2(U.discountPctPerOrder)} off gross). The third figure narrows this to the ${fmt(U.couponOrders)} orders that actually used a coupon (${eur(U.avgDiscountPerCouponOrder)} / ${pct2(U.discountPctPerCouponOrder)} each). The % is discount ÷ gross (net + discount), aggregated across orders. Discounts are WooCommerce-only - offline/wholesale orders carry none. Figures use 2 decimals.`;
+  const metaNote = U.metaSpendAvailable
+    ? `Meta ad spend is pulled from Windsor.`
+    : `Meta Ads currently returns €0 spend from Windsor for this period, so the figures reflect the €500/month influencer spend only - they will include Meta automatically once spend data flows.`;
+  document.getElementById('ueNote').textContent=`Cost per package = total marketing spend ÷ packages (units) from the order log, since ${U.sinceLabel}. Marketing spend = Meta ad spend + €500/month influencer (Mar, Apr, May, Jun, Jul 2026). ${metaNote} Average discount per order = total discount given ÷ all ${fmt(U.wcOrders)} completed WooCommerce orders (${eur(U.totalDiscount)} total, ${pct2(U.discountPctPerOrder)} off gross); the third card narrows this to the ${fmt(U.couponOrders)} coupon orders (${eur(U.avgDiscountPerCouponOrder)} / ${pct2(U.discountPctPerCouponOrder)} each). Months with spend but no orders yet (e.g. Jul) show cost/package as n/a. Figures use 2 decimals.`;
 }
 
 // ---- KPI gauges ----
