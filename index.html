@@ -885,10 +885,10 @@ const DATA = {
   "aov": 105.5
  },
  "packMix": {
-  "ones": 12,
-  "threes": 55,
-  "tens": 50,
-  "others": 17
+  "ones": 18,
+  "threes": 59,
+  "tens": 53,
+  "others": 13
  },
  "countryOrders": {
   "CZ": {
@@ -1092,69 +1092,69 @@ const DATA = {
   "cac": [
    {
     "label": "Jan 2026",
-    "customers": 0,
+    "customers": 5,
     "metaSpend": 478.43,
     "influencer": 0.0,
     "totalSpend": 478.43,
-    "cacExInfluencer": null,
-    "cacInclInfluencer": null
+    "cacExInfluencer": 95.69,
+    "cacInclInfluencer": 95.69
    },
    {
     "label": "Feb 2026",
-    "customers": 0,
+    "customers": 8,
     "metaSpend": 617.45,
     "influencer": 0.0,
     "totalSpend": 617.45,
-    "cacExInfluencer": null,
-    "cacInclInfluencer": null
+    "cacExInfluencer": 77.18,
+    "cacInclInfluencer": 77.18
    },
    {
     "label": "Mar 2026",
-    "customers": 0,
+    "customers": 12,
     "metaSpend": 469.09,
     "influencer": 500.0,
     "totalSpend": 969.09,
-    "cacExInfluencer": null,
-    "cacInclInfluencer": null
+    "cacExInfluencer": 39.09,
+    "cacInclInfluencer": 80.76
    },
    {
     "label": "Apr 2026",
-    "customers": 0,
+    "customers": 11,
     "metaSpend": 127.14,
     "influencer": 500.0,
     "totalSpend": 627.14,
-    "cacExInfluencer": null,
-    "cacInclInfluencer": null
+    "cacExInfluencer": 11.56,
+    "cacInclInfluencer": 57.01
    },
    {
     "label": "May 2026",
-    "customers": 0,
+    "customers": 19,
     "metaSpend": 425.75,
     "influencer": 500.0,
     "totalSpend": 925.75,
-    "cacExInfluencer": null,
-    "cacInclInfluencer": null
+    "cacExInfluencer": 22.41,
+    "cacInclInfluencer": 48.72
    },
    {
     "label": "Jun 2026",
-    "customers": 0,
+    "customers": 16,
     "metaSpend": 401.97,
     "influencer": 500.0,
     "totalSpend": 901.97,
-    "cacExInfluencer": null,
-    "cacInclInfluencer": null
+    "cacExInfluencer": 25.12,
+    "cacInclInfluencer": 56.37
    }
   ],
   "overall": {
-   "customers": 0,
+   "customers": 59,
    "metaSpend": 2519.83,
    "influencer": 2000.0,
    "totalSpend": 4519.83,
-   "cacExInfluencer": null,
-   "cacInclInfluencer": null
+   "cacExInfluencer": 42.71,
+   "cacInclInfluencer": 76.61
   },
   "avgDiscountPerOrder": 9.31,
-  "discountPctPerOrder": 11.36,
+  "discountPctPerOrder": 11.51,
   "wcOrders": 112,
   "totalDiscount": 1042.72,
   "avgDiscountPerCouponOrder": 30.65,
@@ -1324,7 +1324,7 @@ document.getElementById('p1').textContent=fmt(pm.ones); document.getElementById(
 document.getElementById('p3').textContent=fmt(pm.threes); document.getElementById('p3s').textContent=pp(pm.threes);
 document.getElementById('p10').textContent=fmt(pm.tens); document.getElementById('p10s').textContent=pp(pm.tens);
 document.getElementById('pO').textContent=fmt(pm.others); document.getElementById('pOs').textContent=pp(pm.others);
-document.getElementById('note').textContent=`Orders, revenue and AOV come from the order log (incl. offline/wholesale orders not in WooCommerce). Pack mix counts pack-equivalents: from Oct 2025, multiples of 10 (20, 30, 50…) count as that many 10-packs and other multiples of 3 (6, 9, 24…) as that many 3-packs; before Oct, face value only. "Other orders" are non-standard sizes. AOV is revenue ÷ orders, lifted by occasional large wholesale orders. ${DATA.blanksExcluded} value-less rows were excluded; the current month/week is in progress.`;
+document.getElementById('note').textContent=`Orders, revenue and AOV come from the order log (incl. offline/wholesale orders not in WooCommerce). Pack mix counts pack-equivalents: from Oct 2025, multiples of 10 (20, 30, 50…) count as that many 10-packs and other multiples of 3 (6, 9, 24…) as that many 3-packs, and mixed sizes split into 10s + 3s + singles (13 = 10+3, 25 = 10+10+3+1+1); before Oct, face value only. "Other orders" are pre-Oct non-standard sizes only. AOV is revenue ÷ orders, lifted by occasional large wholesale orders. ${DATA.blanksExcluded} value-less rows were excluded; the current month/week is in progress.`;
 document.getElementById('foot').textContent="Afterglow · revenue dashboard · generated "+new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
 
 renderMain(); renderCountryPies(); renderCoupons(); renderUnitEcon(); renderKpis();
