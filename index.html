@@ -37,8 +37,6 @@
   .section-title .ctx{margin-left:auto;text-transform:none;letter-spacing:0;font-size:12px;color:var(--mid);}
 
   .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
-  .kpi-grid.four{grid-template-columns:repeat(4,1fr);}
-  .kpi-grid.four .kpi-value{font-size:33px;}
   .kpi-card{background:var(--surface);border-radius:14px;padding:22px 20px;border:1px solid var(--line);border-top:3px solid var(--pink);}
   .kpi-label{font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--text2);margin-bottom:9px;}
   .kpi-value{font-family:'HNBlack';font-size:44px;line-height:1;letter-spacing:-.5px;}
@@ -81,18 +79,10 @@
   .ring .rlbl{font-size:10.5px;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-top:8px;}
   .ring .rsub{font-size:11px;color:var(--text2);margin-top:3px;}
 
-  /* unit econ table */
-  .uetbl{width:100%;border-collapse:collapse;font-size:13px;}
-  .uetbl th{text-align:right;font-weight:normal;color:var(--text2);font-size:10.5px;letter-spacing:1px;text-transform:uppercase;padding:10px 12px;border-bottom:1px solid var(--mid);}
-  .uetbl th:first-child,.uetbl td:first-child{text-align:left;}
-  .uetbl td{text-align:right;padding:10px 12px;border-bottom:1px solid var(--line);color:var(--text);}
-  .uetbl tbody tr:last-child td{border-bottom:none;}
-  .uetbl .totrow td{font-family:'HNBlack';color:var(--text);border-top:2px solid var(--mid);border-bottom:none;}
-
   .note{background:rgba(206,0,113,.06);border:1px solid rgba(206,0,113,.22);border-radius:12px;padding:14px 18px;font-size:12px;color:var(--text2);line-height:1.6;margin-top:18px;}
   .footer{text-align:center;padding:34px 20px;font-size:11px;color:var(--mid);}
   .footer .strip{margin-bottom:20px;}
-  @media(max-width:680px){.kpi-grid,.kpi-grid.four,.totals,.packmix{grid-template-columns:1fr 1fr;}.grid2,.mapgrid,.gauge-grid{grid-template-columns:1fr;}.cover h1{font-size:40px;}}
+  @media(max-width:680px){.kpi-grid,.totals,.packmix{grid-template-columns:1fr 1fr;}.grid2,.mapgrid,.gauge-grid{grid-template-columns:1fr;}.cover h1{font-size:40px;}}
 </style>
 </head>
 <body>
@@ -106,7 +96,6 @@
 <div class="container">
   <div class="maintabs">
     <button class="mt-btn active" data-p="main">Main</button>
-    <button class="mt-btn" data-p="unit">CAC</button>
     <button class="mt-btn" data-p="kpis">KPIs</button>
   </div>
 
@@ -118,10 +107,9 @@
     </div>
 
     <div class="section-title"><span class="num">01</span> Latest <span id="periodKind">month</span><span class="ctx" id="latestCtx"></span></div>
-    <div class="kpi-grid four">
+    <div class="kpi-grid">
       <div class="kpi-card"><div class="kpi-label">Revenue</div><div class="kpi-value" id="kRev">-</div><div class="kpi-sub" id="kRevSub"></div><span class="badge" id="kRevB"></span></div>
       <div class="kpi-card"><div class="kpi-label">Orders</div><div class="kpi-value" id="kOrd">-</div><div class="kpi-sub" id="kOrdSub"></div><span class="badge" id="kOrdB"></span></div>
-      <div class="kpi-card"><div class="kpi-label">Packs sold</div><div class="kpi-value" id="kUnit">-</div><div class="kpi-sub" id="kUnitSub"></div><span class="badge" id="kUnitB"></span></div>
       <div class="kpi-card"><div class="kpi-label">AOV</div><div class="kpi-value" id="kAov">-</div><div class="kpi-sub" id="kAovSub"></div><span class="badge" id="kAovB"></span></div>
     </div>
 
@@ -166,20 +154,6 @@
       <div class="card"><h3>Top coupons<span style="color:var(--mid);font-size:11px"> · code · uses · discount · revenue</span></h3><div class="leg" id="topCpn" style="flex-direction:column;gap:9px"></div></div>
     </div>
     <div class="note" id="cpnNote"></div>
-  </div>
-
-  <!-- ===== UNIT ECON ===== -->
-  <div class="panel" id="panel-unit">
-    <div class="section-title"><span class="num">€</span> Customer acquisition cost &amp; discounts<span class="ctx" id="ueCtx">since Jan 2026</span></div>
-    <div class="kpi-grid">
-      <div class="kpi-card"><div class="kpi-label">CAC / customer (incl. influencer)</div><div class="kpi-value" id="uePpp">-</div><div class="kpi-sub" id="uePppSub"></div></div>
-      <div class="kpi-card"><div class="kpi-label">Avg discount / order</div><div class="kpi-value" id="ueDisc">-</div><div class="kpi-sub" id="ueDiscSub"></div></div>
-      <div class="kpi-card"><div class="kpi-label">Avg discount / discounted order</div><div class="kpi-value" id="ueDiscC">-</div><div class="kpi-sub" id="ueDiscCSub"></div></div>
-    </div>
-    <div class="section-title"><span class="num">&middot;</span> Customer acquisition cost by month</div>
-    <div class="card"><h3>CAC - cost per customer (EUR)</h3><div class="chart-wrap"><canvas id="chPpp"></canvas></div></div>
-    <div class="card"><h3>Monthly detail</h3><div id="ueTable"></div></div>
-    <div class="note" id="ueNote"></div>
   </div>
 
   <!-- ===== KPIS ===== -->
@@ -896,10 +870,10 @@ const DATA = {
   "aov": 102.59
  },
  "packMix": {
-  "ones": 18,
-  "threes": 66,
-  "tens": 55,
-  "others": 13
+  "ones": 12,
+  "threes": 62,
+  "tens": 52,
+  "others": 17
  },
  "countryOrders": {
   "CZ": {
@@ -1103,82 +1077,6 @@ const DATA = {
   "totalDiscountAllOrders": 1104.03,
   "source": "woocommerce"
  },
- "unitEcon": {
-  "sinceLabel": "Jan 2026",
-  "metaSpendAvailable": true,
-  "cac": [
-   {
-    "label": "Jan 2026",
-    "customers": 5,
-    "metaSpend": 478.43,
-    "influencer": 0.0,
-    "totalSpend": 478.43,
-    "cacExInfluencer": 95.69,
-    "cacInclInfluencer": 95.69
-   },
-   {
-    "label": "Feb 2026",
-    "customers": 8,
-    "metaSpend": 617.45,
-    "influencer": 0.0,
-    "totalSpend": 617.45,
-    "cacExInfluencer": 77.18,
-    "cacInclInfluencer": 77.18
-   },
-   {
-    "label": "Mar 2026",
-    "customers": 12,
-    "metaSpend": 469.09,
-    "influencer": 500.0,
-    "totalSpend": 969.09,
-    "cacExInfluencer": 39.09,
-    "cacInclInfluencer": 80.76
-   },
-   {
-    "label": "Apr 2026",
-    "customers": 11,
-    "metaSpend": 127.14,
-    "influencer": 500.0,
-    "totalSpend": 627.14,
-    "cacExInfluencer": 11.56,
-    "cacInclInfluencer": 57.01
-   },
-   {
-    "label": "May 2026",
-    "customers": 19,
-    "metaSpend": 425.75,
-    "influencer": 500.0,
-    "totalSpend": 925.75,
-    "cacExInfluencer": 22.41,
-    "cacInclInfluencer": 48.72
-   },
-   {
-    "label": "Jun 2026",
-    "customers": 24,
-    "metaSpend": 527.7,
-    "influencer": 500.0,
-    "totalSpend": 1027.7,
-    "cacExInfluencer": 21.99,
-    "cacInclInfluencer": 42.82
-   }
-  ],
-  "overall": {
-   "customers": 66,
-   "metaSpend": 2645.56,
-   "influencer": 2000.0,
-   "totalSpend": 4645.56,
-   "cacExInfluencer": 40.08,
-   "cacInclInfluencer": 70.39
-  },
-  "avgDiscountPerOrder": 9.2,
-  "discountPctPerOrder": 11.44,
-  "wcOrders": 120,
-  "totalDiscount": 1104.03,
-  "avgDiscountPerCouponOrder": 26.82,
-  "discountPctPerCouponOrder": 22.93,
-  "couponOrders": 40,
-  "source": "sheet(packages)+woocommerce(discounts)"
- },
  "blanksExcluded": 5,
  "source": "sheet+woocommerce_coupons"
 };
@@ -1217,8 +1115,6 @@ function renderMain(){
   document.getElementById('kRevSub').textContent=`prev ${eur(prev.revenue||0)}`; setBadge('kRevB',last.revenue,prev.revenue);
   document.getElementById('kOrd').textContent=fmt(last.orders);
   document.getElementById('kOrdSub').textContent=`prev ${fmt(prev.orders||0)}`; setBadge('kOrdB',last.orders,prev.orders);
-  document.getElementById('kUnit').textContent=fmt(last.units);
-  document.getElementById('kUnitSub').textContent=`prev ${fmt(prev.units||0)}`; setBadge('kUnitB',last.units,prev.units);
   document.getElementById('kAov').textContent=eur(last.aov);
   document.getElementById('kAovSub').textContent=`prev ${eur(prev.aov||0)}`; setBadge('kAovB',last.aov,prev.aov);
 }
@@ -1270,41 +1166,6 @@ function renderCoupons(){
   document.getElementById('cpnNote').textContent=`Coupon orders are completed orders carrying at least one coupon code; "coupons applied" counts every redemption (orders can stack more than one). Discount given is the total markdown on those orders; coupon revenue is what they still brought in. Across all completed orders, total discount given was ${eur(C.totalDiscountAllOrders)}.`;
 }
 
-// ---- unit economics ----
-function renderUnitEcon(){
-  const U=DATA.unitEcon; if(!U) return;
-  const naE = v => (v==null ? 'n/a' : eur(v));
-  document.getElementById('ueCtx').textContent='since '+U.sinceLabel;
-  document.getElementById('uePpp').textContent=naE(U.overall.cacInclInfluencer);
-  document.getElementById('uePppSub').textContent=`${naE(U.overall.cacExInfluencer)} excl. influencer · ${fmt(U.overall.customers)} customers`;
-  document.getElementById('ueDisc').textContent=eur(U.avgDiscountPerOrder);
-  document.getElementById('ueDiscSub').textContent=`${pct2(U.discountPctPerOrder)} off gross · ${fmt(U.wcOrders)} WooCommerce orders`;
-  document.getElementById('ueDiscC').textContent=eur(U.avgDiscountPerCouponOrder);
-  document.getElementById('ueDiscCSub').textContent=`${pct2(U.discountPctPerCouponOrder)} off gross · ${fmt(U.couponOrders)} coupon orders`;
-  const rows=U.cac, labels=rows.map(r=>r.label.split(' ')[0]);
-  if(charts.ppp)charts.ppp.destroy();
-  charts.ppp=new Chart(document.getElementById('chPpp'),{type:'bar',
-    data:{labels,datasets:[
-      {label:'CAC excl. influencer',data:rows.map(r=>r.cacExInfluencer),backgroundColor:'#C7C9CE',borderRadius:4,maxBarThickness:30},
-      {label:'CAC incl. influencer',data:rows.map(r=>r.cacInclInfluencer),backgroundColor:PINK,borderRadius:4,maxBarThickness:30}
-    ]},
-    options:{responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:true,position:'bottom',labels:{color:TXT,font:{size:10},boxWidth:12}},
-        tooltip:{callbacks:{label:c=>c.dataset.label+': '+eur(c.parsed.y)}}},
-      scales:{x:{grid:{color:GRID},ticks:{color:TXT,font:{size:10},maxRotation:0,autoSkip:true}},
-              y:{grid:{color:GRID},ticks:{color:TXT,font:{size:10},callback:v=>eur(v)},beginAtZero:true}}}});
-  let t=`<table class="uetbl"><thead><tr><th>Month</th><th>Customers</th><th>Meta</th><th>Influencer</th><th>CAC excl. infl.</th><th>CAC incl. infl.</th></tr></thead><tbody>`;
-  rows.forEach(r=>{t+=`<tr><td>${r.label}</td><td>${fmt(r.customers)}</td><td>${eur(r.metaSpend)}</td><td>${eur(r.influencer)}</td><td>${naE(r.cacExInfluencer)}</td><td>${naE(r.cacInclInfluencer)}</td></tr>`;});
-  const o=U.overall;
-  t+=`<tr class="totrow"><td>Overall</td><td>${fmt(o.customers)}</td><td>${eur(o.metaSpend)}</td><td>${eur(o.influencer)}</td><td>${naE(o.cacExInfluencer)}</td><td>${naE(o.cacInclInfluencer)}</td></tr>`;
-  t+=`</tbody></table>`;
-  document.getElementById('ueTable').innerHTML=t;
-  const metaNote = U.metaSpendAvailable
-    ? `Meta ad spend is pulled from Windsor.`
-    : `Meta Ads currently returns €0 spend from Windsor for this period.`;
-  document.getElementById('ueNote').textContent=`CAC (customer acquisition cost) = marketing spend ÷ unique customers, since ${U.sinceLabel}. Customers are distinct billing emails on completed WooCommerce orders (deduped, internal/test addresses excluded), so a repeat buyer counts once per month. The two CAC columns split out the €500/month influencer cost (Mar, Apr, May, Jun 2026): "excl. influencer" is Meta spend only ÷ customers; "incl. influencer" adds it back. ${metaNote} CAC counts active purchasing customers (a buyer returning in a later month is counted again that month); it is blended across channels and ignores attribution lag. Average discount per order = total discount ÷ all ${fmt(U.wcOrders)} completed WooCommerce orders (${eur(U.totalDiscount)} total, ${pct2(U.discountPctPerOrder)} off gross); the third card narrows to the ${fmt(U.couponOrders)} coupon orders (${eur(U.avgDiscountPerCouponOrder)} / ${pct2(U.discountPctPerCouponOrder)} each). Figures use 2 decimals.`;
-}
-
 // ---- KPI gauges ----
 function ring(pct,label,sub){
   const r=42,c=2*Math.PI*r,off=c*(1-Math.min(1,pct/100));
@@ -1341,17 +1202,16 @@ document.getElementById('p1').textContent=fmt(pm.ones); document.getElementById(
 document.getElementById('p3').textContent=fmt(pm.threes); document.getElementById('p3s').textContent=pp(pm.threes);
 document.getElementById('p10').textContent=fmt(pm.tens); document.getElementById('p10s').textContent=pp(pm.tens);
 document.getElementById('pO').textContent=fmt(pm.others); document.getElementById('pOs').textContent=pp(pm.others);
-document.getElementById('note').textContent=`Orders, revenue and AOV come from the order log (incl. offline/wholesale orders not in WooCommerce). Pack mix counts pack-equivalents: from Oct 2025, multiples of 10 (20, 30, 50…) count as that many 10-packs and other multiples of 3 (6, 9, 24…) as that many 3-packs, and mixed sizes split into 10s + 3s + singles (13 = 10+3, 25 = 10+10+3+1+1); before Oct, face value only. "Other orders" are pre-Oct non-standard sizes only. AOV is revenue ÷ orders, lifted by occasional large wholesale orders. ${DATA.blanksExcluded} value-less rows were excluded; the current month/week is in progress.`;
+document.getElementById('note').textContent=`Orders, revenue and AOV come from the order log (incl. offline/wholesale orders not in WooCommerce). Pack mix counts pack-equivalents: from Oct 2025, multiples of 10 (20, 30, 50…) count as that many 10-packs and other multiples of 3 (6, 9, 24…) as that many 3-packs; before Oct, face value only. "Other orders" are non-standard sizes. AOV is revenue ÷ orders, lifted by occasional large wholesale orders. ${DATA.blanksExcluded} value-less rows were excluded; the current month/week is in progress.`;
 document.getElementById('foot').textContent="Afterglow · revenue dashboard · generated "+new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
 
-renderMain(); renderCountryPies(); renderCoupons(); renderUnitEcon(); renderKpis();
+renderMain(); renderCountryPies(); renderCoupons(); renderKpis();
 document.querySelectorAll('.tg-btn').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.tg-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');state=b.dataset.g;renderMain();}));
 document.querySelectorAll('.mt-btn').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.mt-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
   document.getElementById('panel-'+b.dataset.p).classList.add('active');
-  if(b.dataset.p==='unit') renderUnitEcon();  // (re)build chart while panel is visible so it sizes correctly
   window.scrollTo({top:0,behavior:'smooth'});}));
 </script>
 </body>
