@@ -62,6 +62,8 @@
   .pm .v{font-family:'HNBlack';font-size:34px;color:var(--pink);letter-spacing:-.5px;}
   .pm .l{font-size:10.5px;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-top:6px;}
   .pm .s{font-size:11px;color:var(--mid);margin-top:3px;}
+  .rowlbl{font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text2);margin:0 0 8px;}
+  .rowlbl.gap{margin-top:16px;}
 
   /* country pies */
   .leg{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:14px;}
@@ -138,19 +140,35 @@
       <div class="card"><h3>Revenue by country</h3><div class="chart-wrap" style="height:250px"><canvas id="chRevPie" role="img" aria-label="Revenue by country"></canvas></div><div class="leg" id="legRev"></div></div>
     </div>
 
-    <div class="section-title"><span class="num">04</span> All time<span class="ctx" id="allCtx"></span></div>
+    <div class="section-title"><span class="num">04</span> Totals<span class="ctx" id="allCtx"></span></div>
+    <div class="rowlbl">All time</div>
     <div class="totals">
       <div class="tot"><div class="v" id="tRev">-</div><div class="l">Revenue</div></div>
       <div class="tot"><div class="v" id="tOrd">-</div><div class="l">Orders</div></div>
       <div class="tot"><div class="v" id="tAov">-</div><div class="l">AOV</div></div>
       <div class="tot"><div class="v" id="tUnit">-</div><div class="l">Units sold</div></div>
     </div>
-    <div class="section-title" style="border:none;margin:22px 0 0"><span class="num">&middot;</span> Pack mix<span class="ctx">pack-equivalents</span></div>
-    <div class="packmix">
+    <div class="rowlbl gap" id="ytdLblTot">Year to date</div>
+    <div class="totals">
+      <div class="tot"><div class="v" id="tRevY">-</div><div class="l">Revenue</div></div>
+      <div class="tot"><div class="v" id="tOrdY">-</div><div class="l">Orders</div></div>
+      <div class="tot"><div class="v" id="tAovY">-</div><div class="l">AOV</div></div>
+      <div class="tot"><div class="v" id="tUnitY">-</div><div class="l">Units sold</div></div>
+    </div>
+    <div class="section-title" style="border:none;margin:22px 0 12px"><span class="num">&middot;</span> Pack mix<span class="ctx">pack-equivalents</span></div>
+    <div class="rowlbl">All time</div>
+    <div class="packmix" style="margin-top:0">
       <div class="pm"><div class="v" id="p1">-</div><div class="l">1-pack</div><div class="s" id="p1s"></div></div>
       <div class="pm"><div class="v" id="p3">-</div><div class="l">3-pack</div><div class="s" id="p3s"></div></div>
       <div class="pm"><div class="v" id="p10">-</div><div class="l">10-pack</div><div class="s" id="p10s"></div></div>
-      <div class="pm"><div class="v" id="pO">-</div><div class="l">Other orders</div><div class="s" id="pOs"></div></div>
+      <div class="pm"><div class="v" id="pT">-</div><div class="l">Total packs</div><div class="s" id="pTs"></div></div>
+    </div>
+    <div class="rowlbl gap" id="ytdLblPm">Year to date</div>
+    <div class="packmix" style="margin-top:0">
+      <div class="pm"><div class="v" id="p1y">-</div><div class="l">1-pack</div><div class="s" id="p1ys"></div></div>
+      <div class="pm"><div class="v" id="p3y">-</div><div class="l">3-pack</div><div class="s" id="p3ys"></div></div>
+      <div class="pm"><div class="v" id="p10y">-</div><div class="l">10-pack</div><div class="s" id="p10ys"></div></div>
+      <div class="pm"><div class="v" id="pTy">-</div><div class="l">Total packs</div><div class="s" id="pTys"></div></div>
     </div>
     <div class="note" id="note"></div>
 
@@ -905,11 +923,24 @@ const DATA = {
   "units": 1022,
   "aov": 102.14
  },
+ "totalsYtd": {
+  "year": 2026,
+  "orders": 79,
+  "revenue": 6797.51,
+  "units": 629,
+  "aov": 86.04
+ },
  "packMix": {
-  "ones": 18,
-  "threes": 67,
-  "tens": 55,
-  "others": 13
+  "ones": 32,
+  "threes": 90,
+  "tens": 72,
+  "others": 0
+ },
+ "packMixYtd": {
+  "ones": 8,
+  "threes": 47,
+  "tens": 48,
+  "others": 0
  },
  "countryOrders": {
   "CZ": {
@@ -1351,16 +1382,27 @@ function renderKpis(){
 // ---- boot ----
 const m=DATA.monthly;
 document.getElementById('period').textContent="📅 "+m[0].label+" – "+m[m.length-1].label;
-document.getElementById('tRev').textContent=eur(DATA.totals.revenue);
-document.getElementById('tOrd').textContent=fmt(DATA.totals.orders);
-document.getElementById('tAov').textContent=eur(DATA.totals.aov);
-document.getElementById('tUnit').textContent=fmt(DATA.totals.units);
-const pm=DATA.packMix, pmTot=pm.ones+pm.threes+pm.tens+pm.others, pp=n=>pmTot?Math.round(n/pmTot*100)+'%':'';
-document.getElementById('p1').textContent=fmt(pm.ones); document.getElementById('p1s').textContent=pp(pm.ones);
-document.getElementById('p3').textContent=fmt(pm.threes); document.getElementById('p3s').textContent=pp(pm.threes);
-document.getElementById('p10').textContent=fmt(pm.tens); document.getElementById('p10s').textContent=pp(pm.tens);
-document.getElementById('pO').textContent=fmt(pm.others); document.getElementById('pOs').textContent=pp(pm.others);
-document.getElementById('note').textContent=`Orders, revenue and AOV come from the order log (incl. offline/wholesale orders not in WooCommerce). Pack mix counts pack-equivalents: from Oct 2025, multiples of 10 (20, 30, 50…) count as that many 10-packs and other multiples of 3 (6, 9, 24…) as that many 3-packs, and mixed sizes split into 10s + 3s + singles (13 = 10+3, 25 = 10+10+3+1+1); before Oct, face value only. "Other orders" are pre-Oct non-standard sizes only. AOV is revenue ÷ orders, lifted by occasional large wholesale orders. ${DATA.blanksExcluded} value-less rows were excluded; the current month/week is in progress.`;
+const T=DATA.totals, TY=DATA.totalsYtd||{year:'',orders:0,revenue:0,units:0,aov:0};
+document.getElementById('tRev').textContent=eur(T.revenue);
+document.getElementById('tOrd').textContent=fmt(T.orders);
+document.getElementById('tAov').textContent=eur(T.aov);
+document.getElementById('tUnit').textContent=fmt(T.units);
+document.getElementById('tRevY').textContent=eur(TY.revenue);
+document.getElementById('tOrdY').textContent=fmt(TY.orders);
+document.getElementById('tAovY').textContent=eur(TY.aov);
+document.getElementById('tUnitY').textContent=fmt(TY.units);
+document.getElementById('ytdLblTot').textContent=TY.year+" year to date";
+document.getElementById('ytdLblPm').textContent=TY.year+" year to date";
+function fillPm(pm,ids){
+  const tot=pm.ones+pm.threes+pm.tens, pp=n=>tot?Math.round(n/tot*100)+'%':'';
+  document.getElementById(ids[0]).textContent=fmt(pm.ones); document.getElementById(ids[0]+'s').textContent=pp(pm.ones);
+  document.getElementById(ids[1]).textContent=fmt(pm.threes); document.getElementById(ids[1]+'s').textContent=pp(pm.threes);
+  document.getElementById(ids[2]).textContent=fmt(pm.tens); document.getElementById(ids[2]+'s').textContent=pp(pm.tens);
+  document.getElementById(ids[3]).textContent=fmt(tot); document.getElementById(ids[3]+'s').textContent='pack-equivalents';
+}
+fillPm(DATA.packMix,['p1','p3','p10','pT']);
+fillPm(DATA.packMixYtd||{ones:0,threes:0,tens:0},['p1y','p3y','p10y','pTy']);
+document.getElementById('note').textContent=`Orders, revenue and AOV come from the order log (incl. offline/wholesale orders not in WooCommerce). Pack mix counts pack-equivalents (Afterglow sells 1/3/10-packs): multiples of 10 (20, 30, 50, 100…) count as that many 10-packs, other multiples of 3 (6, 9, 24…) as that many 3-packs, and any other size splits into 10s + 3s + singles (13 = 10+3, 76 = 7×10 + 2×3, 5 = 3+1+1, 2 = 1+1). This attribution now also covers the pre-Oct 2025 non-standard sizes that used to show as "Other orders". AOV is revenue ÷ orders, lifted by occasional large wholesale orders. ${DATA.blanksExcluded} value-less rows were excluded; the current month/week and YTD are in progress.`;
 document.getElementById('foot').textContent="Afterglow · revenue dashboard · generated "+new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
 
 renderMain(); renderCountryPies(); renderCoupons(); renderUnitEcon(); renderKpis();
