@@ -1,0 +1,1022 @@
+{
+ "monthly": [
+  {
+   "label": "Jul 2025",
+   "orders": 6,
+   "revenue": 533.08,
+   "units": 37,
+   "aov": 88.85,
+   "couponOrders": 3,
+   "couponDiscount": 25.89,
+   "couponRevenue": 113.95
+  },
+  {
+   "label": "Aug 2025",
+   "orders": 9,
+   "revenue": 2074.1,
+   "units": 119,
+   "aov": 230.46,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "Sep 2025",
+   "orders": 5,
+   "revenue": 1813.61,
+   "units": 110,
+   "aov": 362.72,
+   "couponOrders": 1,
+   "couponDiscount": 9.95,
+   "couponRevenue": 41.51
+  },
+  {
+   "label": "Oct 2025",
+   "orders": 7,
+   "revenue": 297.07,
+   "units": 19,
+   "aov": 42.44,
+   "couponOrders": 1,
+   "couponDiscount": 29.1,
+   "couponRevenue": 18.67
+  },
+  {
+   "label": "Nov 2025",
+   "orders": 7,
+   "revenue": 442.3,
+   "units": 31,
+   "aov": 63.19,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "Dec 2025",
+   "orders": 14,
+   "revenue": 1014.2,
+   "units": 77,
+   "aov": 72.44,
+   "couponOrders": 2,
+   "couponDiscount": 29.51,
+   "couponRevenue": 321.3
+  },
+  {
+   "label": "Jan 2026",
+   "orders": 7,
+   "revenue": 445.72,
+   "units": 45,
+   "aov": 63.67,
+   "couponOrders": 2,
+   "couponDiscount": 98.36,
+   "couponRevenue": 119.0
+  },
+  {
+   "label": "Feb 2026",
+   "orders": 5,
+   "revenue": 806.84,
+   "units": 60,
+   "aov": 161.37,
+   "couponOrders": 2,
+   "couponDiscount": 29.51,
+   "couponRevenue": 321.3
+  },
+  {
+   "label": "Mar 2026",
+   "orders": 11,
+   "revenue": 1143.22,
+   "units": 121,
+   "aov": 103.93,
+   "couponOrders": 4,
+   "couponDiscount": 302.91,
+   "couponRevenue": 442.42
+  },
+  {
+   "label": "Apr 2026",
+   "orders": 11,
+   "revenue": 664.25,
+   "units": 52,
+   "aov": 60.39,
+   "couponOrders": 4,
+   "couponDiscount": 44.57,
+   "couponRevenue": 274.14
+  },
+  {
+   "label": "May 2026",
+   "orders": 20,
+   "revenue": 2138.62,
+   "units": 214,
+   "aov": 106.93,
+   "couponOrders": 8,
+   "couponDiscount": 333.58,
+   "couponRevenue": 1116.12
+  },
+  {
+   "label": "Jun 2026",
+   "orders": 24,
+   "revenue": 1553.96,
+   "units": 134,
+   "aov": 64.75,
+   "couponOrders": 13,
+   "couponDiscount": 169.27,
+   "couponRevenue": 837.76
+  },
+  {
+   "label": "Jul 2026",
+   "orders": 3,
+   "revenue": 185.0,
+   "units": 16,
+   "aov": 61.67,
+   "couponOrders": 1,
+   "couponDiscount": 20.0,
+   "couponRevenue": 95.2
+  }
+ ],
+ "weekly": [
+  {
+   "label": "07 Jul 25",
+   "weekStart": "2025-07-07",
+   "orders": 1,
+   "revenue": 27.7,
+   "units": 1,
+   "aov": 27.7,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "14 Jul 25",
+   "weekStart": "2025-07-14",
+   "orders": 4,
+   "revenue": 181.38,
+   "units": 12,
+   "aov": 45.34,
+   "couponOrders": 3,
+   "couponDiscount": 25.89,
+   "couponRevenue": 113.95
+  },
+  {
+   "label": "21 Jul 25",
+   "weekStart": "2025-07-21",
+   "orders": 0,
+   "revenue": 0.0,
+   "units": 0,
+   "aov": 0,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "28 Jul 25",
+   "weekStart": "2025-07-28",
+   "orders": 1,
+   "revenue": 324.0,
+   "units": 24,
+   "aov": 324.0,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "04 Aug 25",
+   "weekStart": "2025-08-04",
+   "orders": 2,
+   "revenue": 1392.82,
+   "units": 77,
+   "aov": 696.41,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "11 Aug 25",
+   "weekStart": "2025-08-11",
+   "orders": 1,
+   "revenue": 255.0,
+   "units": 24,
+   "aov": 255.0,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "18 Aug 25",
+   "weekStart": "2025-08-18",
+   "orders": 5,
+   "revenue": 374.43,
+   "units": 16,
+   "aov": 74.89,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "25 Aug 25",
+   "weekStart": "2025-08-25",
+   "orders": 1,
+   "revenue": 51.85,
+   "units": 2,
+   "aov": 51.85,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "01 Sep 25",
+   "weekStart": "2025-09-01",
+   "orders": 0,
+   "revenue": 0.0,
+   "units": 0,
+   "aov": 0,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "08 Sep 25",
+   "weekStart": "2025-09-08",
+   "orders": 3,
+   "revenue": 1678.5,
+   "units": 104,
+   "aov": 559.5,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "15 Sep 25",
+   "weekStart": "2025-09-15",
+   "orders": 1,
+   "revenue": 96.3,
+   "units": 4,
+   "aov": 96.3,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "22 Sep 25",
+   "weekStart": "2025-09-22",
+   "orders": 1,
+   "revenue": 38.81,
+   "units": 2,
+   "aov": 38.81,
+   "couponOrders": 1,
+   "couponDiscount": 9.95,
+   "couponRevenue": 41.51
+  },
+  {
+   "label": "29 Sep 25",
+   "weekStart": "2025-09-29",
+   "orders": 0,
+   "revenue": 0.0,
+   "units": 0,
+   "aov": 0,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "06 Oct 25",
+   "weekStart": "2025-10-06",
+   "orders": 0,
+   "revenue": 0.0,
+   "units": 0,
+   "aov": 0,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "13 Oct 25",
+   "weekStart": "2025-10-13",
+   "orders": 3,
+   "revenue": 149.7,
+   "units": 9,
+   "aov": 49.9,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "20 Oct 25",
+   "weekStart": "2025-10-20",
+   "orders": 3,
+   "revenue": 118.47,
+   "units": 9,
+   "aov": 39.49,
+   "couponOrders": 1,
+   "couponDiscount": 29.1,
+   "couponRevenue": 18.67
+  },
+  {
+   "label": "27 Oct 25",
+   "weekStart": "2025-10-27",
+   "orders": 1,
+   "revenue": 28.9,
+   "units": 1,
+   "aov": 28.9,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "03 Nov 25",
+   "weekStart": "2025-11-03",
+   "orders": 2,
+   "revenue": 73.6,
+   "units": 4,
+   "aov": 36.8,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "10 Nov 25",
+   "weekStart": "2025-11-10",
+   "orders": 1,
+   "revenue": 51.9,
+   "units": 3,
+   "aov": 51.9,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "17 Nov 25",
+   "weekStart": "2025-11-17",
+   "orders": 2,
+   "revenue": 145.9,
+   "units": 11,
+   "aov": 72.95,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "24 Nov 25",
+   "weekStart": "2025-11-24",
+   "orders": 2,
+   "revenue": 170.9,
+   "units": 13,
+   "aov": 85.45,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "01 Dec 25",
+   "weekStart": "2025-12-01",
+   "orders": 3,
+   "revenue": 381.8,
+   "units": 33,
+   "aov": 127.27,
+   "couponOrders": 1,
+   "couponDiscount": 19.67,
+   "couponRevenue": 214.2
+  },
+  {
+   "label": "08 Dec 25",
+   "weekStart": "2025-12-08",
+   "orders": 3,
+   "revenue": 219.5,
+   "units": 16,
+   "aov": 73.17,
+   "couponOrders": 1,
+   "couponDiscount": 9.84,
+   "couponRevenue": 107.1
+  },
+  {
+   "label": "15 Dec 25",
+   "weekStart": "2025-12-15",
+   "orders": 6,
+   "revenue": 249.0,
+   "units": 15,
+   "aov": 41.5,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "22 Dec 25",
+   "weekStart": "2025-12-22",
+   "orders": 2,
+   "revenue": 163.9,
+   "units": 13,
+   "aov": 81.95,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "29 Dec 25",
+   "weekStart": "2025-12-29",
+   "orders": 1,
+   "revenue": 25.4,
+   "units": 1,
+   "aov": 25.4,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "05 Jan 26",
+   "weekStart": "2026-01-05",
+   "orders": 0,
+   "revenue": 0.0,
+   "units": 0,
+   "aov": 0,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "12 Jan 26",
+   "weekStart": "2026-01-12",
+   "orders": 1,
+   "revenue": 44.9,
+   "units": 3,
+   "aov": 44.9,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "19 Jan 26",
+   "weekStart": "2026-01-19",
+   "orders": 1,
+   "revenue": 119.0,
+   "units": 10,
+   "aov": 119.0,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "26 Jan 26",
+   "weekStart": "2026-01-26",
+   "orders": 4,
+   "revenue": 256.42,
+   "units": 31,
+   "aov": 64.1,
+   "couponOrders": 2,
+   "couponDiscount": 98.36,
+   "couponRevenue": 119.0
+  },
+  {
+   "label": "02 Feb 26",
+   "weekStart": "2026-02-02",
+   "orders": 1,
+   "revenue": 119.0,
+   "units": 10,
+   "aov": 119.0,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "09 Feb 26",
+   "weekStart": "2026-02-09",
+   "orders": 0,
+   "revenue": 0.0,
+   "units": 0,
+   "aov": 0,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "16 Feb 26",
+   "weekStart": "2026-02-16",
+   "orders": 1,
+   "revenue": 119.0,
+   "units": 10,
+   "aov": 119.0,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "23 Feb 26",
+   "weekStart": "2026-02-23",
+   "orders": 3,
+   "revenue": 568.84,
+   "units": 40,
+   "aov": 189.61,
+   "couponOrders": 2,
+   "couponDiscount": 29.51,
+   "couponRevenue": 321.3
+  },
+  {
+   "label": "02 Mar 26",
+   "weekStart": "2026-03-02",
+   "orders": 3,
+   "revenue": 535.5,
+   "units": 70,
+   "aov": 178.5,
+   "couponOrders": 1,
+   "couponDiscount": 245.87,
+   "couponRevenue": 297.5
+  },
+  {
+   "label": "09 Mar 26",
+   "weekStart": "2026-03-09",
+   "orders": 4,
+   "revenue": 432.5,
+   "units": 39,
+   "aov": 108.12,
+   "couponOrders": 1,
+   "couponDiscount": 49.59,
+   "couponRevenue": 59.5
+  },
+  {
+   "label": "16 Mar 26",
+   "weekStart": "2026-03-16",
+   "orders": 2,
+   "revenue": 89.8,
+   "units": 6,
+   "aov": 44.9,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "23 Mar 26",
+   "weekStart": "2026-03-23",
+   "orders": 1,
+   "revenue": 45.01,
+   "units": 3,
+   "aov": 45.01,
+   "couponOrders": 1,
+   "couponDiscount": 3.77,
+   "couponRevenue": 45.01
+  },
+  {
+   "label": "30 Mar 26",
+   "weekStart": "2026-03-30",
+   "orders": 3,
+   "revenue": 187.92,
+   "units": 16,
+   "aov": 62.64,
+   "couponOrders": 2,
+   "couponDiscount": 13.68,
+   "couponRevenue": 147.51
+  },
+  {
+   "label": "06 Apr 26",
+   "weekStart": "2026-04-06",
+   "orders": 2,
+   "revenue": 71.84,
+   "units": 6,
+   "aov": 35.92,
+   "couponOrders": 2,
+   "couponDiscount": 14.9,
+   "couponRevenue": 71.84
+  },
+  {
+   "label": "13 Apr 26",
+   "weekStart": "2026-04-13",
+   "orders": 1,
+   "revenue": 44.9,
+   "units": 3,
+   "aov": 44.9,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "20 Apr 26",
+   "weekStart": "2026-04-20",
+   "orders": 1,
+   "revenue": 119.0,
+   "units": 10,
+   "aov": 119.0,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "27 Apr 26",
+   "weekStart": "2026-04-27",
+   "orders": 7,
+   "revenue": 370.8,
+   "units": 26,
+   "aov": 52.97,
+   "couponOrders": 1,
+   "couponDiscount": 19.67,
+   "couponRevenue": 95.2
+  },
+  {
+   "label": "04 May 26",
+   "weekStart": "2026-05-04",
+   "orders": 0,
+   "revenue": 0.0,
+   "units": 0,
+   "aov": 0,
+   "couponOrders": 0,
+   "couponDiscount": 0.0,
+   "couponRevenue": 0.0
+  },
+  {
+   "label": "11 May 26",
+   "weekStart": "2026-05-11",
+   "orders": 4,
+   "revenue": 442.31,
+   "units": 46,
+   "aov": 110.58,
+   "couponOrders": 3,
+   "couponDiscount": 102.37,
+   "couponRevenue": 397.41
+  },
+  {
+   "label": "18 May 26",
+   "weekStart": "2026-05-18",
+   "orders": 3,
+   "revenue": 165.8,
+   "units": 14,
+   "aov": 55.27,
+   "couponOrders": 1,
+   "couponDiscount": 20.0,
+   "couponRevenue": 95.2
+  },
+  {
+   "label": "25 May 26",
+   "weekStart": "2026-05-25",
+   "orders": 11,
+   "revenue": 1440.71,
+   "units": 148,
+   "aov": 130.97,
+   "couponOrders": 4,
+   "couponDiscount": 211.21,
+   "couponRevenue": 623.51
+  },
+  {
+   "label": "01 Jun 26",
+   "weekStart": "2026-06-01",
+   "orders": 4,
+   "revenue": 295.02,
+   "units": 26,
+   "aov": 73.76,
+   "couponOrders": 2,
+   "couponDiscount": 27.09,
+   "couponRevenue": 131.12
+  },
+  {
+   "label": "08 Jun 26",
+   "weekStart": "2026-06-08",
+   "orders": 3,
+   "revenue": 333.2,
+   "units": 30,
+   "aov": 111.07,
+   "couponOrders": 1,
+   "couponDiscount": 19.67,
+   "couponRevenue": 95.2
+  },
+  {
+   "label": "15 Jun 26",
+   "weekStart": "2026-06-15",
+   "orders": 5,
+   "revenue": 219.5,
+   "units": 15,
+   "aov": 43.9,
+   "couponOrders": 1,
+   "couponDiscount": 4.13,
+   "couponRevenue": 39.9
+  },
+  {
+   "label": "22 Jun 26",
+   "weekStart": "2026-06-22",
+   "orders": 8,
+   "revenue": 493.35,
+   "units": 44,
+   "aov": 61.67,
+   "couponOrders": 5,
+   "couponDiscount": 84.62,
+   "couponRevenue": 358.65
+  },
+  {
+   "label": "29 Jun 26",
+   "weekStart": "2026-06-29",
+   "orders": 7,
+   "revenue": 397.89,
+   "units": 35,
+   "aov": 56.84,
+   "couponOrders": 5,
+   "couponDiscount": 53.76,
+   "couponRevenue": 308.09
+  }
+ ],
+ "totals": {
+  "orders": 129,
+  "revenue": 13111.97,
+  "units": 1035,
+  "aov": 101.64
+ },
+ "totalsYtd": {
+  "year": 2026,
+  "orders": 81,
+  "revenue": 6937.61,
+  "units": 642,
+  "aov": 85.65
+ },
+ "packMix": {
+  "ones": 32,
+  "threes": 91,
+  "tens": 73,
+  "others": 0
+ },
+ "packMixYtd": {
+  "ones": 8,
+  "threes": 48,
+  "tens": 49,
+  "others": 0
+ },
+ "countryOrders": {
+  "CZ": {
+   "orders": 29,
+   "revenue": 4629.02
+  },
+  "SK": {
+   "orders": 20,
+   "revenue": 3027.97
+  },
+  "NL": {
+   "orders": 16,
+   "revenue": 995.34
+  },
+  "DE": {
+   "orders": 22,
+   "revenue": 1439.47
+  },
+  "ES": {
+   "orders": 19,
+   "revenue": 1535.65
+  },
+  "PT": {
+   "orders": 6,
+   "revenue": 325.5
+  },
+  "IT": {
+   "orders": 5,
+   "revenue": 271.62
+  },
+  "IE/DE": {
+   "orders": 1,
+   "revenue": 44.9
+  },
+  "BE": {
+   "orders": 10,
+   "revenue": 652.1
+  },
+  "ID": {
+   "orders": 1,
+   "revenue": 190.4
+  }
+ },
+ "kpis": [
+  {
+   "month": "Jun 2026",
+   "tPieces": 217,
+   "tRev": 2554.0,
+   "aPieces": 134,
+   "aRev": 1553.96
+  },
+  {
+   "month": "Jul 2026",
+   "tPieces": 147,
+   "tRev": 1732.56,
+   "aPieces": 16,
+   "aRev": 185.0
+  },
+  {
+   "month": "Aug 2026",
+   "tPieces": 162,
+   "tRev": 1905.81,
+   "aPieces": 0,
+   "aRev": 0.0
+  },
+  {
+   "month": "Sep 2026",
+   "tPieces": 178,
+   "tRev": 2096.39,
+   "aPieces": 0,
+   "aRev": 0.0
+  },
+  {
+   "month": "Oct 2026",
+   "tPieces": 196,
+   "tRev": 2306.03,
+   "aPieces": 0,
+   "aRev": 0.0
+  },
+  {
+   "month": "Nov 2026",
+   "tPieces": 216,
+   "tRev": 2536.64,
+   "aPieces": 0,
+   "aRev": 0.0
+  },
+  {
+   "month": "Dec 2026",
+   "tPieces": 237,
+   "tRev": 2790.3,
+   "aPieces": 0,
+   "aRev": 0.0
+  }
+ ],
+ "coupons": {
+  "orders": 41,
+  "applications": 41,
+  "discountGiven": 1092.65,
+  "revenue": 3701.37,
+  "pctOrders": 31.78,
+  "pctRevenue": 28.23,
+  "savingsRate": 22.79,
+  "topCoupons": [
+   {
+    "code": "gioiatechno10",
+    "uses": 8,
+    "discount": 35.97,
+    "revenue": 394.57
+   },
+   {
+    "code": "50feedback",
+    "uses": 4,
+    "discount": 344.2,
+    "revenue": 476.0
+   },
+   {
+    "code": "10pack",
+    "uses": 4,
+    "discount": 78.68,
+    "revenue": 380.8
+   },
+   {
+    "code": "tryp20",
+    "uses": 4,
+    "discount": 66.76,
+    "revenue": 321.52
+   },
+   {
+    "code": "ag5off",
+    "uses": 4,
+    "discount": 16.66,
+    "revenue": 204.5
+   },
+   {
+    "code": "annakovacic",
+    "uses": 3,
+    "discount": 39.33,
+    "revenue": 428.4
+   },
+   {
+    "code": "blanka30",
+    "uses": 2,
+    "discount": 158.65,
+    "revenue": 447.93
+   },
+   {
+    "code": "tryp40",
+    "uses": 2,
+    "discount": 79.01,
+    "revenue": 169.74
+   },
+   {
+    "code": "gloweva",
+    "uses": 2,
+    "discount": 20.71,
+    "revenue": 87.8
+   },
+   {
+    "code": "glowtina",
+    "uses": 2,
+    "discount": 15.16,
+    "revenue": 67.66
+   },
+   {
+    "code": "curacura10",
+    "uses": 1,
+    "discount": 19.67,
+    "revenue": 214.2
+   },
+   {
+    "code": "20off",
+    "uses": 1,
+    "discount": 39.67,
+    "revenue": 190.4
+   },
+   {
+    "code": "marek30",
+    "uses": 1,
+    "discount": 59.01,
+    "revenue": 166.6
+   },
+   {
+    "code": "mariia15",
+    "uses": 1,
+    "discount": 14.75,
+    "revenue": 101.15
+   },
+   {
+    "code": "30off",
+    "uses": 1,
+    "discount": 11.13,
+    "revenue": 31.43
+   },
+   {
+    "code": "michaltest70",
+    "uses": 1,
+    "discount": 29.11,
+    "revenue": 18.67
+   }
+  ],
+  "totalDiscountAllOrders": 1124.03,
+  "source": "woocommerce"
+ },
+ "unitEcon": {
+  "sinceLabel": "Jan 2026",
+  "metaSpendAvailable": true,
+  "cac": [
+   {
+    "label": "Jan 2026",
+    "customers": 5,
+    "metaSpend": 478.43,
+    "influencer": 0.0,
+    "totalSpend": 478.43,
+    "cacExInfluencer": 95.69,
+    "cacInclInfluencer": 95.69
+   },
+   {
+    "label": "Feb 2026",
+    "customers": 8,
+    "metaSpend": 617.45,
+    "influencer": 0.0,
+    "totalSpend": 617.45,
+    "cacExInfluencer": 77.18,
+    "cacInclInfluencer": 77.18
+   },
+   {
+    "label": "Mar 2026",
+    "customers": 12,
+    "metaSpend": 469.09,
+    "influencer": 500.0,
+    "totalSpend": 969.09,
+    "cacExInfluencer": 39.09,
+    "cacInclInfluencer": 80.76
+   },
+   {
+    "label": "Apr 2026",
+    "customers": 11,
+    "metaSpend": 127.14,
+    "influencer": 500.0,
+    "totalSpend": 627.14,
+    "cacExInfluencer": 11.56,
+    "cacInclInfluencer": 57.01
+   },
+   {
+    "label": "May 2026",
+    "customers": 19,
+    "metaSpend": 425.75,
+    "influencer": 500.0,
+    "totalSpend": 925.75,
+    "cacExInfluencer": 22.41,
+    "cacInclInfluencer": 48.72
+   },
+   {
+    "label": "Jun 2026",
+    "customers": 24,
+    "metaSpend": 558.16,
+    "influencer": 500.0,
+    "totalSpend": 1058.16,
+    "cacExInfluencer": 23.26,
+    "cacInclInfluencer": 44.09
+   },
+   {
+    "label": "Jul 2026",
+    "customers": 3,
+    "metaSpend": 96.38,
+    "influencer": 0.0,
+    "totalSpend": 96.38,
+    "cacExInfluencer": 32.13,
+    "cacInclInfluencer": 32.13
+   }
+  ],
+  "overall": {
+   "customers": 69,
+   "metaSpend": 2772.4,
+   "influencer": 2000.0,
+   "totalSpend": 4772.4,
+   "cacExInfluencer": 40.18,
+   "cacInclInfluencer": 69.17
+  },
+  "avgDiscountPerOrder": 9.14,
+  "discountPctPerOrder": 11.41,
+  "wcOrders": 123,
+  "totalDiscount": 1124.03,
+  "avgDiscountPerCouponOrder": 26.65,
+  "discountPctPerCouponOrder": 22.79,
+  "couponOrders": 41,
+  "source": "sheet(packages)+woocommerce(discounts)"
+ },
+ "blanksExcluded": 5,
+ "source": "sheet+woocommerce_coupons"
+}

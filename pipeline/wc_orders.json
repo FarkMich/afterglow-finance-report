@@ -1,0 +1,986 @@
+[
+ {
+  "id": "5495",
+  "date": "2025-10-22T11:57:47",
+  "total": 49.9,
+  "discount_total": 0.0,
+  "country": "NL",
+  "email": "hutta.peter@gmail.com"
+ },
+ {
+  "id": "5492",
+  "date": "2025-10-21T18:36:38",
+  "total": 49.9,
+  "discount_total": 0.0,
+  "country": "NL",
+  "email": "emma.brunette@outlook.com"
+ },
+ {
+  "id": "5455",
+  "date": "2025-10-18T08:38:16",
+  "total": 49.9,
+  "discount_total": 0.0,
+  "country": "ES",
+  "email": "petrenkomariyawork@gmail.com"
+ },
+ {
+  "id": "5510",
+  "date": "2025-10-24T13:46:23",
+  "total": 18.67,
+  "discount_total": 29.1,
+  "country": "SK",
+  "email": "misko.farkas@gmail.com"
+ },
+ {
+  "id": "6218",
+  "date": "2025-12-19T12:33:07",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "PT",
+  "email": "norton.antonio@gmail.com"
+ },
+ {
+  "id": "5735",
+  "date": "2025-12-08T22:55:03",
+  "total": 51.9,
+  "discount_total": 0.0,
+  "country": "ES",
+  "email": "cara.bruner@gmail.com"
+ },
+ {
+  "id": "5831",
+  "date": "2025-12-09T22:18:16",
+  "total": 48.6,
+  "discount_total": 0.0,
+  "country": "SK",
+  "email": "pauli.baranova@gmail.com"
+ },
+ {
+  "id": "6060",
+  "date": "2025-12-13T14:39:34",
+  "total": 107.1,
+  "discount_total": 9.84,
+  "country": "CZ",
+  "email": "anca@annakovacic.com"
+ },
+ {
+  "id": "6179",
+  "date": "2025-12-16T17:12:05",
+  "total": 42.5,
+  "discount_total": 0.0,
+  "country": "CZ",
+  "email": "katerina.silhova.safrankova@dchabry.cz"
+ },
+ {
+  "id": "6171",
+  "date": "2025-12-16T11:04:32",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "PT",
+  "email": "serdartutkan@hotmail.com"
+ },
+ {
+  "id": "6183",
+  "date": "2025-12-17T12:14:26",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "SK",
+  "email": "oliver.majduch@gmail.com"
+ },
+ {
+  "id": "6207",
+  "date": "2025-12-19T09:28:30",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "ES",
+  "email": "euke.bibiloni@gmail.com"
+ },
+ {
+  "id": "6240",
+  "date": "2025-12-21T19:34:15",
+  "total": 26.9,
+  "discount_total": 0.0,
+  "country": "IT",
+  "email": "giorgia.lanciotti90@gmail.com"
+ },
+ {
+  "id": "6239",
+  "date": "2025-12-21T09:15:47",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "DE",
+  "email": "fucinielisabeth@gmail.com"
+ },
+ {
+  "id": "6314",
+  "date": "2025-12-25T08:00:20",
+  "total": 119.0,
+  "discount_total": 0.0,
+  "country": "ES",
+  "email": "carolinacarrillo.s@gmail.com"
+ },
+ {
+  "id": "6321",
+  "date": "2025-12-27T10:31:06",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "NL",
+  "email": "jellemedema@me.com"
+ },
+ {
+  "id": "6334",
+  "date": "2026-01-01T11:14:55",
+  "total": 25.4,
+  "discount_total": 0.0,
+  "country": "NL",
+  "email": "sannevanheemskerk@gmail.com"
+ },
+ {
+  "id": "5701",
+  "date": "2025-12-07T17:59:50",
+  "total": 119.0,
+  "discount_total": 0.0,
+  "country": "ES",
+  "email": "petrenkomariyawork@gmail.com"
+ },
+ {
+  "id": "5691",
+  "date": "2025-12-02T12:03:32",
+  "total": 48.6,
+  "discount_total": 0.0,
+  "country": "SK",
+  "email": "biela.juliana@gmail.com"
+ },
+ {
+  "id": "5686",
+  "date": "2025-12-01T13:59:35",
+  "total": 214.2,
+  "discount_total": 19.67,
+  "country": "CZ",
+  "email": "ondrej@curacura.org"
+ },
+ {
+  "id": "5679",
+  "date": "2025-11-30T21:11:11",
+  "total": 119.0,
+  "discount_total": 31.38,
+  "country": "ES",
+  "email": "natalie_rodgers@hotmail.com"
+ },
+ {
+  "id": "5657",
+  "date": "2025-11-27T20:32:39",
+  "total": 51.9,
+  "discount_total": 0.0,
+  "country": "ES",
+  "email": "pe_kuehn@yahoo.com"
+ },
+ {
+  "id": "5606",
+  "date": "2025-11-21T13:41:13",
+  "total": 26.9,
+  "discount_total": 0.0,
+  "country": "PT",
+  "email": "akkinrenato@gmail.com"
+ },
+ {
+  "id": "5594",
+  "date": "2025-11-17T13:28:51",
+  "total": 119.0,
+  "discount_total": 0.0,
+  "country": "DE",
+  "email": "juliusewig@gmail.com"
+ },
+ {
+  "id": "5572",
+  "date": "2025-11-12T10:10:00",
+  "total": 51.9,
+  "discount_total": 0.0,
+  "country": "ES",
+  "email": "howardkelly1957@gmail.com"
+ },
+ {
+  "id": "5555",
+  "date": "2025-11-08T22:20:59",
+  "total": 22.6,
+  "discount_total": 0.0,
+  "country": "CZ",
+  "email": "petra@vividcasting.cz"
+ },
+ {
+  "id": "5538",
+  "date": "2025-10-30T21:19:04",
+  "total": 28.9,
+  "discount_total": 0.0,
+  "country": "ES",
+  "email": "bolinj2@gmail.com"
+ },
+ {
+  "id": "5465",
+  "date": "2025-10-19T19:23:20",
+  "total": 49.9,
+  "discount_total": 0.0,
+  "country": "NL",
+  "email": "gino@pipdenhaag.nl"
+ },
+ {
+  "id": "5464",
+  "date": "2025-10-19T06:04:13",
+  "total": 49.9,
+  "discount_total": 0.0,
+  "country": "CZ",
+  "email": "klara.ondr@gmail.com"
+ },
+ {
+  "id": "4810",
+  "date": "2025-09-22T13:21:55",
+  "total": 41.51,
+  "discount_total": 9.95,
+  "country": "CZ",
+  "email": "rejoicing_travel157@simplelogin.com"
+ },
+ {
+  "id": "4806",
+  "date": "2025-09-15T19:33:55",
+  "total": 96.3,
+  "discount_total": 0.0,
+  "country": "CZ",
+  "email": "tomas.pok@seznam.cz"
+ },
+ {
+  "id": "4805",
+  "date": "2025-09-11T11:15:27",
+  "total": 27.77,
+  "discount_total": 0.0,
+  "country": "SK",
+  "email": "oliver.majduch@gmail.com"
+ },
+ {
+  "id": "4740",
+  "date": "2025-08-28T10:52:18",
+  "total": 51.85,
+  "discount_total": 0.0,
+  "country": "SK",
+  "email": "yassaman.omidbakhsh@gmail.com"
+ },
+ {
+  "id": "4738",
+  "date": "2025-08-23T19:09:51",
+  "total": 96.3,
+  "discount_total": 0.0,
+  "country": "SK",
+  "email": "biela.juliana@gmail.com"
+ },
+ {
+  "id": "4731",
+  "date": "2025-08-19T11:26:29",
+  "total": 72.22,
+  "discount_total": 0.0,
+  "country": "DE",
+  "email": "wiebing@web.de"
+ },
+ {
+  "id": "4727",
+  "date": "2025-08-18T08:28:28",
+  "total": 29.58,
+  "discount_total": 0.0,
+  "country": "NL",
+  "email": "w_vdneut@hotmail.com"
+ },
+ {
+  "id": "4725",
+  "date": "2025-08-17T20:11:27",
+  "total": 53.65,
+  "discount_total": 0.0,
+  "country": "NL",
+  "email": "jansen.doorn@gmail.com"
+ },
+ {
+  "id": "4663",
+  "date": "2025-08-07T19:05:04",
+  "total": 28.6,
+  "discount_total": 0.0,
+  "country": "SK",
+  "email": "masikmel@yahoo.com"
+ },
+ {
+  "id": "4208",
+  "date": "2025-07-16T11:25:52",
+  "total": 61.65,
+  "discount_total": 15.49,
+  "country": "CZ",
+  "email": "radoslav.pittner@gmail.com"
+ },
+ {
+  "id": "4167",
+  "date": "2025-07-14T10:07:28",
+  "total": 26.15,
+  "discount_total": 5.2,
+  "country": "SK",
+  "email": "designated.box@gmail.com"
+ },
+ {
+  "id": "4161",
+  "date": "2025-07-14T08:13:28",
+  "total": 26.15,
+  "discount_total": 5.2,
+  "country": "SK",
+  "email": "koestler.tina@gmail.com"
+ },
+ {
+  "id": "3879",
+  "date": "2025-07-06T12:22:42",
+  "total": 27.7,
+  "discount_total": 0.0,
+  "country": "CZ",
+  "email": "ftacnik.matej@gmail.com"
+ },
+ {
+  "id": "7448",
+  "date": "2026-01-15T18:46:17",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "IE",
+  "email": "conor137@gmail.com"
+ },
+ {
+  "id": "7510",
+  "date": "2026-01-27T23:43:05",
+  "total": 59.5,
+  "discount_total": 49.18,
+  "country": "CZ",
+  "email": "klara.ondr@gmail.com"
+ },
+ {
+  "id": "7545",
+  "date": "2026-01-29T18:46:47",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "CZ",
+  "email": "dan@svec.com"
+ },
+ {
+  "id": "7516",
+  "date": "2026-01-29T13:53:33",
+  "total": 59.5,
+  "discount_total": 49.18,
+  "country": "ES",
+  "email": "petrenkomariyawork@gmail.com"
+ },
+ {
+  "id": "7565",
+  "date": "2026-02-04T01:34:50",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "ES",
+  "email": "bernatgusa@gmail.com"
+ },
+ {
+  "id": "7572",
+  "date": "2026-02-05T20:54:51",
+  "total": 119.0,
+  "discount_total": 0.0,
+  "country": "ES",
+  "email": "ieva.hertel@yahoo.com"
+ },
+ {
+  "id": "7579",
+  "date": "2026-02-06T15:00:49",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "PT",
+  "email": "bruno.matias85@gmail.com"
+ },
+ {
+  "id": "7920",
+  "date": "2026-04-13T14:28:54",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "IT",
+  "email": "baiocchi.alessandro@virgilio.it"
+ },
+ {
+  "id": "7915",
+  "date": "2026-04-11T13:53:17",
+  "total": 40.41,
+  "discount_total": 3.77,
+  "country": "DE",
+  "email": "kristian.herger@gmail.com"
+ },
+ {
+  "id": "7873",
+  "date": "2026-04-07T17:42:48",
+  "total": 31.43,
+  "discount_total": 11.13,
+  "country": "CZ",
+  "email": "dasa.hanzelyova@gmail.com"
+ },
+ {
+  "id": "7866",
+  "date": "2026-04-05T13:54:59",
+  "total": 107.1,
+  "discount_total": 10.0,
+  "country": "DE",
+  "email": "mariangelaliuzzi88@gmail.com"
+ },
+ {
+  "id": "7859",
+  "date": "2026-04-02T18:46:32",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "IT",
+  "email": "dellavanzat@gmail.com"
+ },
+ {
+  "id": "7846",
+  "date": "2026-03-30T12:52:34",
+  "total": 40.41,
+  "discount_total": 3.68,
+  "country": "IT",
+  "email": "francesca.burzi9@gmail.com"
+ },
+ {
+  "id": "7841",
+  "date": "2026-03-29T10:15:08",
+  "total": 45.01,
+  "discount_total": 3.77,
+  "country": "DE",
+  "email": "mariangelaliuzzi88@gmail.com"
+ },
+ {
+  "id": "7803",
+  "date": "2026-03-20T12:51:05",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "BE",
+  "email": "erwin.tielemans@mac.com"
+ },
+ {
+  "id": "7786",
+  "date": "2026-03-17T07:51:37",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "NL",
+  "email": "aukejan@hotmail.com"
+ },
+ {
+  "id": "7775",
+  "date": "2026-03-13T14:30:07",
+  "total": 238.0,
+  "discount_total": 0.0,
+  "country": "CZ",
+  "email": "hustakjan@gmail.com"
+ },
+ {
+  "id": "7770",
+  "date": "2026-03-12T17:16:41",
+  "total": 59.5,
+  "discount_total": 49.59,
+  "country": "SK",
+  "email": "pauli.baranova@gmail.com"
+ },
+ {
+  "id": "7764",
+  "date": "2026-03-10T18:09:49",
+  "total": 89.8,
+  "discount_total": 0.0,
+  "country": "NL",
+  "email": "mokoppert@gmail.com"
+ },
+ {
+  "id": "7760",
+  "date": "2026-03-10T14:42:01",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "BE",
+  "email": "catherine.billiet@hotmail.com"
+ },
+ {
+  "id": "7734",
+  "date": "2026-03-08T17:30:35",
+  "total": 119.0,
+  "discount_total": 0.0,
+  "country": "PT",
+  "email": "imranehameed@gmail.com"
+ },
+ {
+  "id": "7731",
+  "date": "2026-03-07T17:32:50",
+  "total": 297.5,
+  "discount_total": 245.87,
+  "country": "NL",
+  "email": "emma.brunette@outlook.com"
+ },
+ {
+  "id": "7728",
+  "date": "2026-03-06T16:02:52",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "PT",
+  "email": "elisamatosbarn@gmail.com"
+ },
+ {
+  "id": "7721",
+  "date": "2026-03-04T05:22:57",
+  "total": 119.0,
+  "discount_total": 0.0,
+  "country": "BE",
+  "email": "bigpleasuretomeetyou@gmail.com"
+ },
+ {
+  "id": "7700",
+  "date": "2026-02-28T00:13:38",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "DE",
+  "email": "thiesmoeller81@gmail.com"
+ },
+ {
+  "id": "7698",
+  "date": "2026-02-27T16:04:19",
+  "total": 107.1,
+  "discount_total": 9.84,
+  "country": "CZ",
+  "email": "marek.devaty@gmail.com"
+ },
+ {
+  "id": "7692",
+  "date": "2026-02-25T16:36:01",
+  "total": 214.2,
+  "discount_total": 19.67,
+  "country": "CZ",
+  "email": "Blanik25@gmail.com"
+ },
+ {
+  "id": "7659",
+  "date": "2026-02-19T00:13:03",
+  "total": 119.0,
+  "discount_total": 0.0,
+  "country": "DE",
+  "email": "nie_kohle_85@web.de"
+ },
+ {
+  "id": "7644",
+  "date": "2026-02-16T15:58:59",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "NL",
+  "email": "kristao108@gmail.com"
+ },
+ {
+  "id": "7951",
+  "date": "2026-04-24T10:20:48",
+  "total": 119.0,
+  "discount_total": 0.0,
+  "country": "ES",
+  "email": "grinberg.gabriel@gmail.com"
+ },
+ {
+  "id": "7962",
+  "date": "2026-04-27T07:07:26",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "CZ",
+  "email": "bozduganov@centrum.cz"
+ },
+ {
+  "id": "7974",
+  "date": "2026-04-28T09:48:03",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "NL",
+  "email": "Onome.emami@gmail.com"
+ },
+ {
+  "id": "7970",
+  "date": "2026-04-28T00:02:20",
+  "total": 27.3,
+  "discount_total": 0.0,
+  "country": "ES",
+  "email": "micacardinali@gmail.com"
+ },
+ {
+  "id": "7968",
+  "date": "2026-04-27T13:45:30",
+  "total": 95.2,
+  "discount_total": 19.67,
+  "country": "BE",
+  "email": "bigpleasuretomeetyou@gmail.com"
+ },
+ {
+  "id": "7975",
+  "date": "2026-04-28T14:48:20",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "PT",
+  "email": "norton.antonio@gmail.com"
+ },
+ {
+  "id": "8003",
+  "date": "2026-05-03T21:17:06",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "NL",
+  "email": "lindavandenbosch84@gmail.com"
+ },
+ {
+  "id": "8001",
+  "date": "2026-05-02T20:28:05",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "NL",
+  "email": "aukejan@hotmail.com"
+ },
+ {
+  "id": "8060",
+  "date": "2026-05-12T21:12:17",
+  "total": 166.6,
+  "discount_total": 59.0,
+  "country": "CZ",
+  "email": "marek.devaty@gmail.com"
+ },
+ {
+  "id": "8062",
+  "date": "2026-05-14T11:43:35",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "DE",
+  "email": "alexmapitz@gmail.com"
+ },
+ {
+  "id": "8061",
+  "date": "2026-05-13T20:03:59",
+  "total": 40.41,
+  "discount_total": 3.71,
+  "country": "NL",
+  "email": "wampie@djhlembeck.nl"
+ },
+ {
+  "id": "8014",
+  "date": "2026-05-10T23:58:19",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "ES",
+  "email": "jasna.com@gmail.com"
+ },
+ {
+  "id": "8078",
+  "date": "2026-05-20T09:29:00",
+  "total": 95.2,
+  "discount_total": 20.0,
+  "country": "DE",
+  "email": "ilyalex.yacine@gmail.com"
+ },
+ {
+  "id": "8074",
+  "date": "2026-05-16T18:02:07",
+  "total": 190.4,
+  "discount_total": 39.66,
+  "country": "SK",
+  "email": "koestler.tina@gmail.com"
+ },
+ {
+  "id": "8084",
+  "date": "2026-05-23T11:21:42",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "DE",
+  "email": "jens.freiter@gmx.de"
+ },
+ {
+  "id": "8082",
+  "date": "2026-05-22T13:51:11",
+  "total": 25.7,
+  "discount_total": 0.0,
+  "country": "BE",
+  "email": "sven@prspctf.be"
+ },
+ {
+  "id": "8095",
+  "date": "2026-05-26T10:40:35",
+  "total": 71.4,
+  "discount_total": 40.0,
+  "country": "DE",
+  "email": "alexander.w.struck@gmail.com"
+ },
+ {
+  "id": "8093",
+  "date": "2026-05-25T22:59:58",
+  "total": 40.41,
+  "discount_total": 3.68,
+  "country": "IT",
+  "email": "dellavanzat@gmail.com"
+ },
+ {
+  "id": "8091",
+  "date": "2026-05-25T14:54:26",
+  "total": 416.5,
+  "discount_total": 147.53,
+  "country": "CZ",
+  "email": "Blanik25@gmail.com"
+ },
+ {
+  "id": "8087",
+  "date": "2026-05-25T12:33:47",
+  "total": 95.2,
+  "discount_total": 20.0,
+  "country": "DE",
+  "email": "mail@sireos.de"
+ },
+ {
+  "id": "8097",
+  "date": "2026-05-26T19:51:49",
+  "total": 24.5,
+  "discount_total": 0.0,
+  "country": "DE",
+  "email": "katja.schwarz1990@gmail.com"
+ },
+ {
+  "id": "8104",
+  "date": "2026-05-28T09:45:14",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "SK",
+  "email": "oliver.majduch@gmail.com"
+ },
+ {
+  "id": "8103",
+  "date": "2026-05-27T21:24:00",
+  "total": 119.0,
+  "discount_total": 0.0,
+  "country": "CZ",
+  "email": "hustakjan@gmail.com"
+ },
+ {
+  "id": "8106",
+  "date": "2026-05-30T14:26:41",
+  "total": 119.0,
+  "discount_total": 0.0,
+  "country": "ES",
+  "email": "petrenkomariyawork@gmail.com"
+ },
+ {
+  "id": "8128",
+  "date": "2026-06-02T08:47:50",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "BE",
+  "email": "lucvanmael@live.com"
+ },
+ {
+  "id": "8110",
+  "date": "2026-06-01T09:09:34",
+  "total": 95.2,
+  "discount_total": 19.67,
+  "country": "CZ",
+  "email": "bigpleasuretomeetyou@gmail.com"
+ },
+ {
+  "id": "8100",
+  "date": "2026-05-27T13:44:05",
+  "total": 89.8,
+  "discount_total": 0.0,
+  "country": "DE",
+  "email": "paula.pe.eberhard@gmail.com"
+ },
+ {
+  "id": "8137",
+  "date": "2026-06-05T06:45:27",
+  "total": 119.0,
+  "discount_total": 0.0,
+  "country": "CZ",
+  "email": "hustakjan@gmail.com"
+ },
+ {
+  "id": "8141",
+  "date": "2026-06-06T23:03:36",
+  "total": 35.92,
+  "discount_total": 7.42,
+  "country": "CZ",
+  "email": "slavka.esi.baluchova@gmail.com"
+ },
+ {
+  "id": "8242",
+  "date": "2026-06-15T05:29:29",
+  "total": 39.9,
+  "discount_total": 4.13,
+  "country": "NL",
+  "email": "paola.delosreyes@gmail.com"
+ },
+ {
+  "id": "8237",
+  "date": "2026-06-13T12:26:48",
+  "total": 119.0,
+  "discount_total": 0.0,
+  "country": "IT",
+  "email": "francescomucci@hotmail.it"
+ },
+ {
+  "id": "8227",
+  "date": "2026-06-12T17:32:05",
+  "total": 95.2,
+  "discount_total": 19.67,
+  "country": "ES",
+  "email": "micacardinali@gmail.com"
+ },
+ {
+  "id": "8258",
+  "date": "2026-06-18T22:10:18",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "NL",
+  "email": "fghamer1982@gmail.com"
+ },
+ {
+  "id": "8149",
+  "date": "2026-06-12T13:57:27",
+  "total": 119.0,
+  "discount_total": 0.0,
+  "country": "ES",
+  "email": "alejandromartinsampedro@gmail.com"
+ },
+ {
+  "id": "8268",
+  "date": "2026-06-22T10:28:59",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "BE",
+  "email": "kathyvandevelde.1@gmail.com"
+ },
+ {
+  "id": "8266",
+  "date": "2026-06-21T00:38:12",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "SK",
+  "email": "dodasjagusak@gmail.com"
+ },
+ {
+  "id": "8265",
+  "date": "2026-06-20T13:10:30",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "BE",
+  "email": "tomdewindt@gmail.com"
+ },
+ {
+  "id": "8264",
+  "date": "2026-06-20T06:16:47",
+  "total": 89.8,
+  "discount_total": 0.0,
+  "country": "BE",
+  "email": "jaimienauwelaerts@gmail.com"
+ },
+ {
+  "id": "8273",
+  "date": "2026-06-23T13:37:00",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "PT",
+  "email": "lsequeira00@gmail.com"
+ },
+ {
+  "id": "8272",
+  "date": "2026-06-22T17:03:59",
+  "total": 39.9,
+  "discount_total": 4.2,
+  "country": "DE",
+  "email": "kristian.herger@gmail.com"
+ },
+ {
+  "id": "8278",
+  "date": "2026-06-25T16:48:44",
+  "total": 98.34,
+  "discount_total": 52.87,
+  "country": "FI",
+  "email": "timea6503@gmail.com"
+ },
+ {
+  "id": "8287",
+  "date": "2026-06-29T09:48:34",
+  "total": 40.41,
+  "discount_total": 3.68,
+  "country": "IT",
+  "email": "andreatrovato29@gmail.com"
+ },
+ {
+  "id": "8286",
+  "date": "2026-06-29T09:24:11",
+  "total": 39.9,
+  "discount_total": 4.2,
+  "country": "DE",
+  "email": "fil.yevgen@gmail.com"
+ },
+ {
+  "id": "8285",
+  "date": "2026-06-28T21:59:30",
+  "total": 84.8,
+  "discount_total": 4.2,
+  "country": "DE",
+  "email": "lorenzen.heiko@gmail.com"
+ },
+ {
+  "id": "8283",
+  "date": "2026-06-28T05:08:31",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "IT",
+  "email": "bnbefficace@gmail.com"
+ },
+ {
+  "id": "8282",
+  "date": "2026-06-27T19:43:46",
+  "total": 95.2,
+  "discount_total": 19.67,
+  "country": "ES",
+  "email": "agustinacallegari@gmail.com"
+ },
+ {
+  "id": "8281",
+  "date": "2026-06-27T13:29:02",
+  "total": 40.41,
+  "discount_total": 3.68,
+  "country": "IT",
+  "email": "federico.cagno1993@gmail.com"
+ },
+ {
+  "id": "8291",
+  "date": "2026-06-29T21:29:03",
+  "total": 101.15,
+  "discount_total": 14.75,
+  "country": "ES",
+  "email": "petrenkomariyawork@gmail.com"
+ },
+ {
+  "id": "8288",
+  "date": "2026-06-29T13:21:19",
+  "total": 31.43,
+  "discount_total": 11.13,
+  "country": "CZ",
+  "email": "ditamorg@gmail.com"
+ },
+ {
+  "id": "8299",
+  "date": "2026-07-02T10:07:24",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "ES",
+  "email": "gabriel.lg@gmail.com"
+ },
+ {
+  "id": "8303",
+  "date": "2026-07-05T18:50:37",
+  "total": 95.2,
+  "discount_total": 20.0,
+  "country": "DE",
+  "email": "luana@sireos.de"
+ },
+ {
+  "id": "8302",
+  "date": "2026-07-05T13:03:39",
+  "total": 44.9,
+  "discount_total": 0.0,
+  "country": "PT",
+  "email": "kirill.dnp@gmail.com"
+ }
+]

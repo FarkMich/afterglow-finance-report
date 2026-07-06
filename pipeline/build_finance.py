@@ -7,16 +7,16 @@ Reads finance_data.json (parse_finance.py).
 import base64, os, pathlib
 
 HERE = pathlib.Path(__file__).resolve().parent          # .../Afterglow/Finance
-BRAND = str(HERE / "assets")
+BRAND = str(HERE.parent / "Brand identity")
 OUT_DIR = str(HERE)
 DATA_JSON = str(HERE / "finance_data.json")
 os.makedirs(OUT_DIR, exist_ok=True)
 
 def b64(p): return base64.b64encode(pathlib.Path(p).read_bytes()).decode()
-helv = b64(f"{BRAND}/HelveticaNowText.ttf")
-helvblack = b64(f"{BRAND}/helvetica-now-text-black.ttf")
-tang = b64(f"{BRAND}/Tangerine.otf")
-logo = b64(f"{BRAND}/Afterglow-Logo_Black_transparent.svg")
+helv = b64(f"{BRAND}/fonts/HelveticaNowText.ttf")
+helvblack = b64(f"{BRAND}/Visual identity/Fonts/Helvetica/helvetica-now-text-black.ttf")
+tang = b64(f"{BRAND}/fonts/Tangerine.otf")
+logo = b64(f"{BRAND}/Visual identity/Logos/drive-download-20260206T062443Z-1-001/Afterglow-Logo_Black_transparent.svg")
 DATA = pathlib.Path(DATA_JSON).read_text()
 
 TEMPLATE = r"""<!DOCTYPE html>
@@ -58,6 +58,8 @@ TEMPLATE = r"""<!DOCTYPE html>
   .section-title .ctx{margin-left:auto;text-transform:none;letter-spacing:0;font-size:12px;color:var(--mid);}
 
   .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .kpi-grid.four{grid-template-columns:repeat(4,1fr);}
+  .kpi-grid.four .kpi-value{font-size:33px;}
   .kpi-card{background:var(--surface);border-radius:14px;padding:22px 20px;border:1px solid var(--line);border-top:3px solid var(--pink);}
   .kpi-label{font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--text2);margin-bottom:9px;}
   .kpi-value{font-family:'HNBlack';font-size:44px;line-height:1;letter-spacing:-.5px;}
@@ -81,6 +83,8 @@ TEMPLATE = r"""<!DOCTYPE html>
   .pm .v{font-family:'HNBlack';font-size:34px;color:var(--pink);letter-spacing:-.5px;}
   .pm .l{font-size:10.5px;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-top:6px;}
   .pm .s{font-size:11px;color:var(--mid);margin-top:3px;}
+  .rowlbl{font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text2);margin:0 0 8px;}
+  .rowlbl.gap{margin-top:16px;}
 
   /* country pies */
   .leg{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:14px;}
@@ -100,10 +104,18 @@ TEMPLATE = r"""<!DOCTYPE html>
   .ring .rlbl{font-size:10.5px;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-top:8px;}
   .ring .rsub{font-size:11px;color:var(--text2);margin-top:3px;}
 
+  /* unit econ table */
+  .uetbl{width:100%;border-collapse:collapse;font-size:13px;}
+  .uetbl th{text-align:right;font-weight:normal;color:var(--text2);font-size:10.5px;letter-spacing:1px;text-transform:uppercase;padding:10px 12px;border-bottom:1px solid var(--mid);}
+  .uetbl th:first-child,.uetbl td:first-child{text-align:left;}
+  .uetbl td{text-align:right;padding:10px 12px;border-bottom:1px solid var(--line);color:var(--text);}
+  .uetbl tbody tr:last-child td{border-bottom:none;}
+  .uetbl .totrow td{font-family:'HNBlack';color:var(--text);border-top:2px solid var(--mid);border-bottom:none;}
+
   .note{background:rgba(206,0,113,.06);border:1px solid rgba(206,0,113,.22);border-radius:12px;padding:14px 18px;font-size:12px;color:var(--text2);line-height:1.6;margin-top:18px;}
   .footer{text-align:center;padding:34px 20px;font-size:11px;color:var(--mid);}
   .footer .strip{margin-bottom:20px;}
-  @media(max-width:680px){.kpi-grid,.totals,.packmix{grid-template-columns:1fr 1fr;}.grid2,.mapgrid,.gauge-grid{grid-template-columns:1fr;}.cover h1{font-size:40px;}}
+  @media(max-width:680px){.kpi-grid,.kpi-grid.four,.totals,.packmix{grid-template-columns:1fr 1fr;}.grid2,.mapgrid,.gauge-grid{grid-template-columns:1fr;}.cover h1{font-size:40px;}}
 </style>
 </head>
 <body>
@@ -117,6 +129,7 @@ TEMPLATE = r"""<!DOCTYPE html>
 <div class="container">
   <div class="maintabs">
     <button class="mt-btn active" data-p="main">Main</button>
+    <button class="mt-btn" data-p="unit">CAC</button>
     <button class="mt-btn" data-p="kpis">KPIs</button>
   </div>
 
@@ -128,9 +141,10 @@ TEMPLATE = r"""<!DOCTYPE html>
     </div>
 
     <div class="section-title"><span class="num">01</span> Latest <span id="periodKind">month</span><span class="ctx" id="latestCtx"></span></div>
-    <div class="kpi-grid">
+    <div class="kpi-grid four">
       <div class="kpi-card"><div class="kpi-label">Revenue</div><div class="kpi-value" id="kRev">-</div><div class="kpi-sub" id="kRevSub"></div><span class="badge" id="kRevB"></span></div>
       <div class="kpi-card"><div class="kpi-label">Orders</div><div class="kpi-value" id="kOrd">-</div><div class="kpi-sub" id="kOrdSub"></div><span class="badge" id="kOrdB"></span></div>
+      <div class="kpi-card"><div class="kpi-label">Packs sold</div><div class="kpi-value" id="kUnit">-</div><div class="kpi-sub" id="kUnitSub"></div><span class="badge" id="kUnitB"></span></div>
       <div class="kpi-card"><div class="kpi-label">AOV</div><div class="kpi-value" id="kAov">-</div><div class="kpi-sub" id="kAovSub"></div><span class="badge" id="kAovB"></span></div>
     </div>
 
@@ -147,19 +161,35 @@ TEMPLATE = r"""<!DOCTYPE html>
       <div class="card"><h3>Revenue by country</h3><div class="chart-wrap" style="height:250px"><canvas id="chRevPie" role="img" aria-label="Revenue by country"></canvas></div><div class="leg" id="legRev"></div></div>
     </div>
 
-    <div class="section-title"><span class="num">04</span> All time<span class="ctx" id="allCtx"></span></div>
+    <div class="section-title"><span class="num">04</span> Totals<span class="ctx" id="allCtx"></span></div>
+    <div class="rowlbl">All time</div>
     <div class="totals">
       <div class="tot"><div class="v" id="tRev">-</div><div class="l">Revenue</div></div>
       <div class="tot"><div class="v" id="tOrd">-</div><div class="l">Orders</div></div>
       <div class="tot"><div class="v" id="tAov">-</div><div class="l">AOV</div></div>
       <div class="tot"><div class="v" id="tUnit">-</div><div class="l">Units sold</div></div>
     </div>
-    <div class="section-title" style="border:none;margin:22px 0 0"><span class="num">&middot;</span> Pack mix<span class="ctx">pack-equivalents</span></div>
-    <div class="packmix">
+    <div class="rowlbl gap" id="ytdLblTot">Year to date</div>
+    <div class="totals">
+      <div class="tot"><div class="v" id="tRevY">-</div><div class="l">Revenue</div></div>
+      <div class="tot"><div class="v" id="tOrdY">-</div><div class="l">Orders</div></div>
+      <div class="tot"><div class="v" id="tAovY">-</div><div class="l">AOV</div></div>
+      <div class="tot"><div class="v" id="tUnitY">-</div><div class="l">Units sold</div></div>
+    </div>
+    <div class="section-title" style="border:none;margin:22px 0 12px"><span class="num">&middot;</span> Pack mix<span class="ctx">pack-equivalents</span></div>
+    <div class="rowlbl">All time</div>
+    <div class="packmix" style="margin-top:0">
       <div class="pm"><div class="v" id="p1">-</div><div class="l">1-pack</div><div class="s" id="p1s"></div></div>
       <div class="pm"><div class="v" id="p3">-</div><div class="l">3-pack</div><div class="s" id="p3s"></div></div>
       <div class="pm"><div class="v" id="p10">-</div><div class="l">10-pack</div><div class="s" id="p10s"></div></div>
-      <div class="pm"><div class="v" id="pO">-</div><div class="l">Other orders</div><div class="s" id="pOs"></div></div>
+      <div class="pm"><div class="v" id="pT">-</div><div class="l">Total packs</div><div class="s" id="pTs"></div></div>
+    </div>
+    <div class="rowlbl gap" id="ytdLblPm">Year to date</div>
+    <div class="packmix" style="margin-top:0">
+      <div class="pm"><div class="v" id="p1y">-</div><div class="l">1-pack</div><div class="s" id="p1ys"></div></div>
+      <div class="pm"><div class="v" id="p3y">-</div><div class="l">3-pack</div><div class="s" id="p3ys"></div></div>
+      <div class="pm"><div class="v" id="p10y">-</div><div class="l">10-pack</div><div class="s" id="p10ys"></div></div>
+      <div class="pm"><div class="v" id="pTy">-</div><div class="l">Total packs</div><div class="s" id="pTys"></div></div>
     </div>
     <div class="note" id="note"></div>
 
@@ -175,6 +205,20 @@ TEMPLATE = r"""<!DOCTYPE html>
       <div class="card"><h3>Top coupons<span style="color:var(--mid);font-size:11px"> · code · uses · discount · revenue</span></h3><div class="leg" id="topCpn" style="flex-direction:column;gap:9px"></div></div>
     </div>
     <div class="note" id="cpnNote"></div>
+  </div>
+
+  <!-- ===== UNIT ECON ===== -->
+  <div class="panel" id="panel-unit">
+    <div class="section-title"><span class="num">€</span> Customer acquisition cost &amp; discounts<span class="ctx" id="ueCtx">since Jan 2026</span></div>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-label">CAC / customer (incl. influencer)</div><div class="kpi-value" id="uePpp">-</div><div class="kpi-sub" id="uePppSub"></div></div>
+      <div class="kpi-card"><div class="kpi-label">Avg discount / order</div><div class="kpi-value" id="ueDisc">-</div><div class="kpi-sub" id="ueDiscSub"></div></div>
+      <div class="kpi-card"><div class="kpi-label">Avg discount / discounted order</div><div class="kpi-value" id="ueDiscC">-</div><div class="kpi-sub" id="ueDiscCSub"></div></div>
+    </div>
+    <div class="section-title"><span class="num">&middot;</span> Customer acquisition cost by month</div>
+    <div class="card"><h3>CAC - cost per customer (EUR)</h3><div class="chart-wrap"><canvas id="chPpp"></canvas></div></div>
+    <div class="card"><h3>Monthly detail</h3><div id="ueTable"></div></div>
+    <div class="note" id="ueNote"></div>
   </div>
 
   <!-- ===== KPIS ===== -->
@@ -223,6 +267,8 @@ function renderMain(){
   document.getElementById('kRevSub').textContent=`prev ${eur(prev.revenue||0)}`; setBadge('kRevB',last.revenue,prev.revenue);
   document.getElementById('kOrd').textContent=fmt(last.orders);
   document.getElementById('kOrdSub').textContent=`prev ${fmt(prev.orders||0)}`; setBadge('kOrdB',last.orders,prev.orders);
+  document.getElementById('kUnit').textContent=fmt(last.units);
+  document.getElementById('kUnitSub').textContent=`prev ${fmt(prev.units||0)}`; setBadge('kUnitB',last.units,prev.units);
   document.getElementById('kAov').textContent=eur(last.aov);
   document.getElementById('kAovSub').textContent=`prev ${eur(prev.aov||0)}`; setBadge('kAovB',last.aov,prev.aov);
 }
@@ -274,6 +320,41 @@ function renderCoupons(){
   document.getElementById('cpnNote').textContent=`Coupon orders are completed orders carrying at least one coupon code; "coupons applied" counts every redemption (orders can stack more than one). Discount given is the total markdown on those orders; coupon revenue is what they still brought in. Across all completed orders, total discount given was ${eur(C.totalDiscountAllOrders)}.`;
 }
 
+// ---- unit economics ----
+function renderUnitEcon(){
+  const U=DATA.unitEcon; if(!U) return;
+  const naE = v => (v==null ? 'n/a' : eur(v));
+  document.getElementById('ueCtx').textContent='since '+U.sinceLabel;
+  document.getElementById('uePpp').textContent=naE(U.overall.cacInclInfluencer);
+  document.getElementById('uePppSub').textContent=`${naE(U.overall.cacExInfluencer)} excl. influencer · ${fmt(U.overall.customers)} customers`;
+  document.getElementById('ueDisc').textContent=eur(U.avgDiscountPerOrder);
+  document.getElementById('ueDiscSub').textContent=`${pct2(U.discountPctPerOrder)} off gross · ${fmt(U.wcOrders)} WooCommerce orders`;
+  document.getElementById('ueDiscC').textContent=eur(U.avgDiscountPerCouponOrder);
+  document.getElementById('ueDiscCSub').textContent=`${pct2(U.discountPctPerCouponOrder)} off gross · ${fmt(U.couponOrders)} coupon orders`;
+  const rows=U.cac, labels=rows.map(r=>r.label.split(' ')[0]);
+  if(charts.ppp)charts.ppp.destroy();
+  charts.ppp=new Chart(document.getElementById('chPpp'),{type:'bar',
+    data:{labels,datasets:[
+      {label:'CAC excl. influencer',data:rows.map(r=>r.cacExInfluencer),backgroundColor:'#C7C9CE',borderRadius:4,maxBarThickness:30},
+      {label:'CAC incl. influencer',data:rows.map(r=>r.cacInclInfluencer),backgroundColor:PINK,borderRadius:4,maxBarThickness:30}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:true,position:'bottom',labels:{color:TXT,font:{size:10},boxWidth:12}},
+        tooltip:{callbacks:{label:c=>c.dataset.label+': '+eur(c.parsed.y)}}},
+      scales:{x:{grid:{color:GRID},ticks:{color:TXT,font:{size:10},maxRotation:0,autoSkip:true}},
+              y:{grid:{color:GRID},ticks:{color:TXT,font:{size:10},callback:v=>eur(v)},beginAtZero:true}}}});
+  let t=`<table class="uetbl"><thead><tr><th>Month</th><th>Customers</th><th>Meta</th><th>Influencer</th><th>CAC excl. infl.</th><th>CAC incl. infl.</th></tr></thead><tbody>`;
+  rows.forEach(r=>{t+=`<tr><td>${r.label}</td><td>${fmt(r.customers)}</td><td>${eur(r.metaSpend)}</td><td>${eur(r.influencer)}</td><td>${naE(r.cacExInfluencer)}</td><td>${naE(r.cacInclInfluencer)}</td></tr>`;});
+  const o=U.overall;
+  t+=`<tr class="totrow"><td>Overall</td><td>${fmt(o.customers)}</td><td>${eur(o.metaSpend)}</td><td>${eur(o.influencer)}</td><td>${naE(o.cacExInfluencer)}</td><td>${naE(o.cacInclInfluencer)}</td></tr>`;
+  t+=`</tbody></table>`;
+  document.getElementById('ueTable').innerHTML=t;
+  const metaNote = U.metaSpendAvailable
+    ? `Meta ad spend is pulled from Windsor.`
+    : `Meta Ads currently returns €0 spend from Windsor for this period.`;
+  document.getElementById('ueNote').textContent=`CAC (customer acquisition cost) = marketing spend ÷ unique customers, since ${U.sinceLabel}. Customers are distinct billing emails on completed WooCommerce orders (deduped, internal/test addresses excluded), so a repeat buyer counts once per month. The two CAC columns split out the €500/month influencer cost (Mar, Apr, May, Jun 2026): "excl. influencer" is Meta spend only ÷ customers; "incl. influencer" adds it back. ${metaNote} CAC counts active purchasing customers (a buyer returning in a later month is counted again that month); it is blended across channels and ignores attribution lag. Average discount per order = total discount ÷ all ${fmt(U.wcOrders)} completed WooCommerce orders (${eur(U.totalDiscount)} total, ${pct2(U.discountPctPerOrder)} off gross); the third card narrows to the ${fmt(U.couponOrders)} coupon orders (${eur(U.avgDiscountPerCouponOrder)} / ${pct2(U.discountPctPerCouponOrder)} each). Figures use 2 decimals.`;
+}
+
 // ---- KPI gauges ----
 function ring(pct,label,sub){
   const r=42,c=2*Math.PI*r,off=c*(1-Math.min(1,pct/100));
@@ -301,25 +382,37 @@ function renderKpis(){
 // ---- boot ----
 const m=DATA.monthly;
 document.getElementById('period').textContent="📅 "+m[0].label+" – "+m[m.length-1].label;
-document.getElementById('tRev').textContent=eur(DATA.totals.revenue);
-document.getElementById('tOrd').textContent=fmt(DATA.totals.orders);
-document.getElementById('tAov').textContent=eur(DATA.totals.aov);
-document.getElementById('tUnit').textContent=fmt(DATA.totals.units);
-const pm=DATA.packMix, pmTot=pm.ones+pm.threes+pm.tens+pm.others, pp=n=>pmTot?Math.round(n/pmTot*100)+'%':'';
-document.getElementById('p1').textContent=fmt(pm.ones); document.getElementById('p1s').textContent=pp(pm.ones);
-document.getElementById('p3').textContent=fmt(pm.threes); document.getElementById('p3s').textContent=pp(pm.threes);
-document.getElementById('p10').textContent=fmt(pm.tens); document.getElementById('p10s').textContent=pp(pm.tens);
-document.getElementById('pO').textContent=fmt(pm.others); document.getElementById('pOs').textContent=pp(pm.others);
-document.getElementById('note').textContent=`Orders, revenue and AOV come from the order log (incl. offline/wholesale orders not in WooCommerce). Pack mix counts pack-equivalents: from Oct 2025, multiples of 10 (20, 30, 50…) count as that many 10-packs and other multiples of 3 (6, 9, 24…) as that many 3-packs; before Oct, face value only. "Other orders" are non-standard sizes. AOV is revenue ÷ orders, lifted by occasional large wholesale orders. ${DATA.blanksExcluded} value-less rows were excluded; the current month/week is in progress.`;
+const T=DATA.totals, TY=DATA.totalsYtd||{year:'',orders:0,revenue:0,units:0,aov:0};
+document.getElementById('tRev').textContent=eur(T.revenue);
+document.getElementById('tOrd').textContent=fmt(T.orders);
+document.getElementById('tAov').textContent=eur(T.aov);
+document.getElementById('tUnit').textContent=fmt(T.units);
+document.getElementById('tRevY').textContent=eur(TY.revenue);
+document.getElementById('tOrdY').textContent=fmt(TY.orders);
+document.getElementById('tAovY').textContent=eur(TY.aov);
+document.getElementById('tUnitY').textContent=fmt(TY.units);
+document.getElementById('ytdLblTot').textContent=TY.year+" year to date";
+document.getElementById('ytdLblPm').textContent=TY.year+" year to date";
+function fillPm(pm,ids){
+  const tot=pm.ones+pm.threes+pm.tens, pp=n=>tot?Math.round(n/tot*100)+'%':'';
+  document.getElementById(ids[0]).textContent=fmt(pm.ones); document.getElementById(ids[0]+'s').textContent=pp(pm.ones);
+  document.getElementById(ids[1]).textContent=fmt(pm.threes); document.getElementById(ids[1]+'s').textContent=pp(pm.threes);
+  document.getElementById(ids[2]).textContent=fmt(pm.tens); document.getElementById(ids[2]+'s').textContent=pp(pm.tens);
+  document.getElementById(ids[3]).textContent=fmt(tot); document.getElementById(ids[3]+'s').textContent='pack-equivalents';
+}
+fillPm(DATA.packMix,['p1','p3','p10','pT']);
+fillPm(DATA.packMixYtd||{ones:0,threes:0,tens:0},['p1y','p3y','p10y','pTy']);
+document.getElementById('note').textContent=`Orders, revenue and AOV come from the order log (incl. offline/wholesale orders not in WooCommerce). Pack mix counts pack-equivalents (Afterglow sells 1/3/10-packs): multiples of 10 (20, 30, 50, 100…) count as that many 10-packs, other multiples of 3 (6, 9, 24…) as that many 3-packs, and any other size splits into 10s + 3s + singles (13 = 10+3, 76 = 7×10 + 2×3, 5 = 3+1+1, 2 = 1+1). This attribution now also covers the pre-Oct 2025 non-standard sizes that used to show as "Other orders". AOV is revenue ÷ orders, lifted by occasional large wholesale orders. ${DATA.blanksExcluded} value-less rows were excluded; the current month/week and YTD are in progress.`;
 document.getElementById('foot').textContent="Afterglow · revenue dashboard · generated "+new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
 
-renderMain(); renderCountryPies(); renderCoupons(); renderKpis();
+renderMain(); renderCountryPies(); renderCoupons(); renderUnitEcon(); renderKpis();
 document.querySelectorAll('.tg-btn').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.tg-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');state=b.dataset.g;renderMain();}));
 document.querySelectorAll('.mt-btn').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.mt-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
   document.getElementById('panel-'+b.dataset.p).classList.add('active');
+  if(b.dataset.p==='unit') renderUnitEcon();  // (re)build chart while panel is visible so it sizes correctly
   window.scrollTo({top:0,behavior:'smooth'});}));
 </script>
 </body>
