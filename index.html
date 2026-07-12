@@ -110,6 +110,7 @@
     <button class="mt-btn active" data-p="main">Main</button>
     <button class="mt-btn" data-p="unit">CAC</button>
     <button class="mt-btn" data-p="kpis">KPIs</button>
+    <button class="mt-btn" data-p="uskpis">US KPIs</button>
   </div>
 
   <!-- ===== MAIN ===== -->
@@ -205,6 +206,24 @@
     <div class="section-title"><span class="num">★</span> Monthly targets<span class="ctx">% completion vs goal</span></div>
     <div class="gauge-grid" id="gauges"></div>
     <div class="note" id="kpiNote"></div>
+  </div>
+
+  <!-- ===== US KPIS ===== -->
+  <div class="panel" id="panel-uskpis">
+    <div class="section-title"><span class="num">US</span> US market projection<span class="ctx" id="usCtx"></span></div>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-label">Total packs sold</div><div class="kpi-value" id="usPacks">-</div><div class="kpi-sub" id="usPacksSub"></div></div>
+      <div class="kpi-card"><div class="kpi-label">Total revenue</div><div class="kpi-value" id="usRev">-</div><div class="kpi-sub" id="usRevSub"></div></div>
+      <div class="kpi-card"><div class="kpi-label">Avg revenue / pack</div><div class="kpi-value" id="usPer">-</div><div class="kpi-sub" id="usPerSub"></div></div>
+    </div>
+    <div class="section-title"><span class="num">&middot;</span> Monthly trajectory</div>
+    <div class="grid2">
+      <div class="card"><h3>Packs sold</h3><div class="chart-wrap"><canvas id="chUsPacks"></canvas></div></div>
+      <div class="card"><h3>Revenue (EUR)</h3><div class="chart-wrap"><canvas id="chUsRev"></canvas></div></div>
+    </div>
+    <div class="section-title"><span class="num">&middot;</span> Monthly detail</div>
+    <div class="card"><div id="usTable"></div></div>
+    <div class="note" id="usNote"></div>
   </div>
 </div>
 <div class="footer"><div class="strip"></div><span id="foot"></span><br><span style="color:#BFC2C7">Your return matters.</span></div>
@@ -1390,6 +1409,37 @@ function renderKpis(){
   document.getElementById('kpiNote').textContent="Pieces = products sold (sum of pack quantities); Revenue in EUR. Targets are monthly goals for 2026; % completion = actual ÷ target. The current month is still in progress, so its rings fill as orders land. Figures use 2 decimals.";
 }
 
+// ---- US KPIs (manual projection) ----
+const US_KPIS=[
+  {month:"Aug 2026",packs:137,rev:1978},
+  {month:"Sep 2026",packs:157,rev:2275},
+  {month:"Oct 2026",packs:181,rev:2616},
+  {month:"Nov 2026",packs:208,rev:3008},
+  {month:"Dec 2026",packs:239,rev:3460},
+];
+function renderUsKpis(){
+  const totP=US_KPIS.reduce((a,r)=>a+r.packs,0), totR=US_KPIS.reduce((a,r)=>a+r.rev,0);
+  const per=totP?totR/totP:0;
+  document.getElementById('usCtx').textContent=US_KPIS[0].month+" – "+US_KPIS[US_KPIS.length-1].month+" · projection";
+  document.getElementById('usPacks').textContent=fmt(totP);
+  document.getElementById('usPacksSub').textContent="across "+US_KPIS.length+" months";
+  document.getElementById('usRev').textContent=eur(totR);
+  document.getElementById('usRevSub').textContent="projected total";
+  document.getElementById('usPer').textContent=eur(per);
+  document.getElementById('usPerSub').textContent="revenue ÷ packs";
+  const labels=US_KPIS.map(r=>r.month.slice(0,3));
+  if(charts.usPacks)charts.usPacks.destroy();
+  if(charts.usRev)charts.usRev.destroy();
+  charts.usPacks=mkBar('chUsPacks',labels,US_KPIS.map(r=>r.packs),fmt);
+  charts.usRev=mkLine('chUsRev',labels,US_KPIS.map(r=>r.rev),eur);
+  let t=`<table class="uetbl"><thead><tr><th>Month</th><th>Packs sold</th><th>Revenue</th><th>Rev / pack</th></tr></thead><tbody>`;
+  US_KPIS.forEach(r=>{t+=`<tr><td>${r.month}</td><td>${fmt(r.packs)}</td><td>${eur(r.rev)}</td><td>${eur(r.packs?r.rev/r.packs:0)}</td></tr>`;});
+  t+=`<tr class="totrow"><td>Total</td><td>${fmt(totP)}</td><td>${eur(totR)}</td><td>${eur(per)}</td></tr>`;
+  t+=`</tbody></table>`;
+  document.getElementById('usTable').innerHTML=t;
+  document.getElementById('usNote').textContent="Projected US-market monthly targets (packs sold and revenue in EUR) for Aug–Dec 2026. These are manually entered planning figures, not live sales; they are independent of the European order log and WooCommerce data on the other tabs. Revenue / pack = revenue ÷ packs. Figures use 2 decimals.";
+}
+
 // ---- boot ----
 const m=DATA.monthly;
 document.getElementById('period').textContent="📅 "+m[0].label+" – "+m[m.length-1].label;
@@ -1416,7 +1466,7 @@ fillPm(DATA.packMixYtd||{ones:0,threes:0,tens:0},['p1y','p3y','p10y','pTy']);
 document.getElementById('note').textContent=`Orders, revenue and AOV come from the order log (incl. offline/wholesale orders not in WooCommerce). Pack mix counts pack-equivalents (Afterglow sells 1/3/10-packs): multiples of 10 (20, 30, 50, 100…) count as that many 10-packs, other multiples of 3 (6, 9, 24…) as that many 3-packs, and any other size splits into 10s + 3s + singles (13 = 10+3, 76 = 7×10 + 2×3, 5 = 3+1+1, 2 = 1+1). This attribution now also covers the pre-Oct 2025 non-standard sizes that used to show as "Other orders". AOV is revenue ÷ orders, lifted by occasional large wholesale orders. ${DATA.blanksExcluded} value-less rows were excluded; the current month/week and YTD are in progress.`;
 document.getElementById('foot').textContent="Afterglow · revenue dashboard · generated "+new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
 
-renderMain(); renderCountryPies(); renderCoupons(); renderUnitEcon(); renderKpis();
+renderMain(); renderCountryPies(); renderCoupons(); renderUnitEcon(); renderKpis(); renderUsKpis();
 document.querySelectorAll('.tg-btn').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.tg-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');state=b.dataset.g;renderMain();}));
 document.querySelectorAll('.mt-btn').forEach(b=>b.addEventListener('click',()=>{
@@ -1424,6 +1474,7 @@ document.querySelectorAll('.mt-btn').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
   document.getElementById('panel-'+b.dataset.p).classList.add('active');
   if(b.dataset.p==='unit') renderUnitEcon();  // (re)build chart while panel is visible so it sizes correctly
+  if(b.dataset.p==='uskpis') renderUsKpis();  // (re)build charts while panel is visible so they size correctly
   window.scrollTo({top:0,behavior:'smooth'});}));
 </script>
 </body>
