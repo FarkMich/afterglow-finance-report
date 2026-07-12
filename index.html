@@ -109,7 +109,7 @@
   <div class="maintabs">
     <button class="mt-btn active" data-p="main">Main</button>
     <button class="mt-btn" data-p="unit">CAC</button>
-    <button class="mt-btn" data-p="kpis">KPIs</button>
+    <button class="mt-btn" data-p="kpis">EU KPIs</button>
     <button class="mt-btn" data-p="uskpis">US KPIs</button>
   </div>
 
@@ -210,19 +210,8 @@
 
   <!-- ===== US KPIS ===== -->
   <div class="panel" id="panel-uskpis">
-    <div class="section-title"><span class="num">US</span> US market projection<span class="ctx" id="usCtx"></span></div>
-    <div class="kpi-grid">
-      <div class="kpi-card"><div class="kpi-label">Total packs sold</div><div class="kpi-value" id="usPacks">-</div><div class="kpi-sub" id="usPacksSub"></div></div>
-      <div class="kpi-card"><div class="kpi-label">Total revenue</div><div class="kpi-value" id="usRev">-</div><div class="kpi-sub" id="usRevSub"></div></div>
-      <div class="kpi-card"><div class="kpi-label">Avg revenue / pack</div><div class="kpi-value" id="usPer">-</div><div class="kpi-sub" id="usPerSub"></div></div>
-    </div>
-    <div class="section-title"><span class="num">&middot;</span> Monthly trajectory</div>
-    <div class="grid2">
-      <div class="card"><h3>Packs sold</h3><div class="chart-wrap"><canvas id="chUsPacks"></canvas></div></div>
-      <div class="card"><h3>Revenue (EUR)</h3><div class="chart-wrap"><canvas id="chUsRev"></canvas></div></div>
-    </div>
-    <div class="section-title"><span class="num">&middot;</span> Monthly detail</div>
-    <div class="card"><div id="usTable"></div></div>
+    <div class="section-title"><span class="num">★</span> US monthly targets<span class="ctx">% completion vs goal</span></div>
+    <div class="gauge-grid" id="usGauges"></div>
     <div class="note" id="usNote"></div>
   </div>
 </div>
@@ -1409,35 +1398,26 @@ function renderKpis(){
   document.getElementById('kpiNote').textContent="Pieces = products sold (sum of pack quantities); Revenue in EUR. Targets are monthly goals for 2026; % completion = actual ÷ target. The current month is still in progress, so its rings fill as orders land. Figures use 2 decimals.";
 }
 
-// ---- US KPIs (manual projection) ----
+// ---- US KPIs (monthly target gauges) ----
+// tPacks / tRev = manually entered US targets. aPacks / aRev = actual US sales,
+// 0 until a US sales source is wired in; the rings fill as real US orders land.
 const US_KPIS=[
-  {month:"Aug 2026",packs:137,rev:1978},
-  {month:"Sep 2026",packs:157,rev:2275},
-  {month:"Oct 2026",packs:181,rev:2616},
-  {month:"Nov 2026",packs:208,rev:3008},
-  {month:"Dec 2026",packs:239,rev:3460},
+  {month:"Aug 2026",tPacks:137,tRev:1978,aPacks:0,aRev:0},
+  {month:"Sep 2026",tPacks:157,tRev:2275,aPacks:0,aRev:0},
+  {month:"Oct 2026",tPacks:181,tRev:2616,aPacks:0,aRev:0},
+  {month:"Nov 2026",tPacks:208,tRev:3008,aPacks:0,aRev:0},
+  {month:"Dec 2026",tPacks:239,tRev:3460,aPacks:0,aRev:0},
 ];
 function renderUsKpis(){
-  const totP=US_KPIS.reduce((a,r)=>a+r.packs,0), totR=US_KPIS.reduce((a,r)=>a+r.rev,0);
-  const per=totP?totR/totP:0;
-  document.getElementById('usCtx').textContent=US_KPIS[0].month+" – "+US_KPIS[US_KPIS.length-1].month+" · projection";
-  document.getElementById('usPacks').textContent=fmt(totP);
-  document.getElementById('usPacksSub').textContent="across "+US_KPIS.length+" months";
-  document.getElementById('usRev').textContent=eur(totR);
-  document.getElementById('usRevSub').textContent="projected total";
-  document.getElementById('usPer').textContent=eur(per);
-  document.getElementById('usPerSub').textContent="revenue ÷ packs";
-  const labels=US_KPIS.map(r=>r.month.slice(0,3));
-  if(charts.usPacks)charts.usPacks.destroy();
-  if(charts.usRev)charts.usRev.destroy();
-  charts.usPacks=mkBar('chUsPacks',labels,US_KPIS.map(r=>r.packs),fmt);
-  charts.usRev=mkLine('chUsRev',labels,US_KPIS.map(r=>r.rev),eur);
-  let t=`<table class="uetbl"><thead><tr><th>Month</th><th>Packs sold</th><th>Revenue</th><th>Rev / pack</th></tr></thead><tbody>`;
-  US_KPIS.forEach(r=>{t+=`<tr><td>${r.month}</td><td>${fmt(r.packs)}</td><td>${eur(r.rev)}</td><td>${eur(r.packs?r.rev/r.packs:0)}</td></tr>`;});
-  t+=`<tr class="totrow"><td>Total</td><td>${fmt(totP)}</td><td>${eur(totR)}</td><td>${eur(per)}</td></tr>`;
-  t+=`</tbody></table>`;
-  document.getElementById('usTable').innerHTML=t;
-  document.getElementById('usNote').textContent="Projected US-market monthly targets (packs sold and revenue in EUR) for Aug–Dec 2026. These are manually entered planning figures, not live sales; they are independent of the European order log and WooCommerce data on the other tabs. Revenue / pack = revenue ÷ packs. Figures use 2 decimals.";
+  document.getElementById('usGauges').innerHTML=US_KPIS.map(k=>{
+    const po=k.tPacks?k.aPacks/k.tPacks*100:0, pr=k.tRev?k.aRev/k.tRev*100:0;
+    return `<div class="gcard"><h4>${k.month}</h4><div class="mlbl">target ${fmt(k.tPacks)} packs · ${eur(k.tRev)}</div>
+      <div class="rings">
+        ${ring(po,'Packs',`${fmt(k.aPacks)} / ${fmt(k.tPacks)}`)}
+        ${ring(pr,'Revenue',`${eur(k.aRev)} / ${eur(k.tRev)}`)}
+      </div></div>`;
+  }).join('');
+  document.getElementById('usNote').textContent="US-market monthly targets (packs sold and revenue in EUR) for Aug–Dec 2026, shown the same way as EU KPIs. % completion = actual ÷ target. Actual US sales are 0 for now (no US sales feed connected yet), so the rings are empty and will fill as real US orders land. Figures use 2 decimals.";
 }
 
 // ---- boot ----
